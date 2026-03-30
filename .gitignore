@@ -160,8 +160,5 @@ cython_debug/
 #.idea/
 
 # Private files
-mtg.collection.csv
-mtg.data.csv
-mtg.data.lands.csv
-mtg.list_manabox.txt
-poke.data.csv
+magic.app/magic.cards.csv
+poke.app/poke.cards.csv
