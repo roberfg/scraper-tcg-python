@@ -28,14 +28,23 @@ for url in urls:
                 all_cards[name] = max(all_cards.get(name, 0), qty)
 
 db = {}
+db_empty = True
 try:
     with open('database.json', 'r', encoding='utf-8') as f:
-        for entry in json.load(f):
-            db[entry['name']] = entry['quantity']
+        content = f.read().strip()
+        if content:
+            data = json.loads(content)
+            if data:
+                for entry in data:
+                    db[entry['name']] = entry['quantity']
+                db_empty = False
 except FileNotFoundError:
     pass
 
-export = {name: all_cards[name] - db.get(name, 0) for name in all_cards}
+if db_empty:
+    export = all_cards.copy()
+else:
+    export = {name: all_cards[name] - db.get(name, 0) for name in all_cards}
 export = {name: qty for name, qty in export.items() if qty > 0}
 
 with open('export.txt', 'w', encoding='utf-8') as f:

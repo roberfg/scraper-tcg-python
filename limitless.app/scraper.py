@@ -69,13 +69,22 @@ def get_owned(raw_name, db_entries):
     return 0
 
 db_entries = []
+db_empty = True
 try:
     with open('database.json', 'r', encoding='utf-8') as f:
-        db_entries = json.load(f)
+        content = f.read().strip()
+        if content:
+            data = json.loads(content)
+            if data:
+                db_entries = data
+                db_empty = False
 except FileNotFoundError:
     pass
 
-export = {name: all_flat[name] - get_owned(name, db_entries) for name in all_flat}
+if db_empty:
+    export = all_flat.copy()
+else:
+    export = {name: all_flat[name] - get_owned(name, db_entries) for name in all_flat}
 export = {name: qty for name, qty in export.items() if qty > 0}
 
 with open('export.txt', 'w', encoding='utf-8') as f:
