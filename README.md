@@ -9,8 +9,9 @@ Proyecto para extraer datos de cartas de Magic: The Gathering y Pokemon TCG desd
 ## Scrapers disponibles
 
 | Carpeta | Juego | Fuente |
-|---|---|---|
+|---|---|---|---|
 | `limitless.app/` | Pokemon TCG | play.limitlesstcg.com |
+| `glc.app/` | Pokemon TCG (Gym Leader Challenge) | gymleaderchallenge.com |
 | `mtgdecks.app/` | Magic: The Gathering | mtgdecks.net |
 | `mtggoldfish.app/` | Magic: The Gathering | mtggoldfish.com |
 
@@ -32,16 +33,16 @@ pip install -r requirements.txt
 
 ## Configuración
 
-Cada carpeta contiene dos archivos editables manualmente:
+Cada carpeta contiene un archivo `urls.json` con las URLs de los mazos a scrapear. Edítalo para agregar o quitar mazos.
 
-- `urls.json` — URLs de los mazos a scrapear. Edita este archivo para agregar o quitar mazos.
-- `database.txt` — Cartas que ya posees, en el mismo formato que `export.txt`. El scraper resta estas cantidades del resultado antes de exportar.
+Opcionalmente, puedes crear un archivo `database.json` con las cartas que ya posees (formato: `[{"name": "...", "quantity": N}]`). El scraper resta estas cantidades del resultado antes de exportar. Esto aplica en `limitless.app/`, `mtgdecks.app/` y `mtggoldfish.app/`; `glc.app/` no soporta base de datos propia.
 
 ## Uso
 
 ```bash
 # Ejecutar un scraper específico
 cd limitless.app && python scraper.py
+cd glc.app && python scraper.py
 cd mtgdecks.app && python scraper.py
 cd mtggoldfish.app && python scraper.py
 ```
@@ -54,7 +55,7 @@ Cada scraper genera un archivo `export.txt` dentro de su carpeta con las cartas 
 <cantidad> <nombre de carta>
 ```
 
-La cantidad refleja la diferencia entre lo que requieren los mazos y lo que ya está registrado en `database.txt`. Si una carta ya está completa en la base de datos, no aparece en el export.
+La cantidad refleja la diferencia entre lo que requieren los mazos y lo que ya está registrado en `database.json`. Si una carta ya está completa en la base de datos, no aparece en el export.
 
 Ejemplo:
 
