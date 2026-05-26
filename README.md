@@ -14,6 +14,7 @@ Proyecto para extraer datos de cartas de Magic: The Gathering y Pokemon TCG desd
 | `glc.app/` | Pokemon TCG (Gym Leader Challenge) | gymleaderchallenge.com |
 | `mtgdecks.app/` | Magic: The Gathering | mtgdecks.net |
 | `mtggoldfish.app/` | Magic: The Gathering | mtggoldfish.com |
+| `moxfield.app/` | Magic: The Gathering | Convierte exports de Magic a CSV para importar en moxfield.com |
 
 ## Requisitos
 
@@ -45,6 +46,7 @@ cd limitless.app && python scraper.py
 cd glc.app && python scraper.py
 cd mtgdecks.app && python scraper.py
 cd mtggoldfish.app && python scraper.py
+cd moxfield.app && python scraper.py
 ```
 
 ## Salida
@@ -63,6 +65,33 @@ Ejemplo:
 2 Air Balloon
 4 Applin (SCR-12)
 3 Drakuloak (TWM-129)
+```
+
+### `moxfield.app`
+
+A diferencia de los otros scrapers, `moxfield.app` no obtiene datos desde URLs, sino que convierte una lista de cartas desde un archivo de texto (`decks.txt`) al formato CSV que acepta Moxfield para importación de mazos.
+
+**Formato de entrada (`decks.txt`):**
+Soporta múltiples formatos de export de Magic:
+
+- `4 Lightning Bolt` (solo cantidad + nombre)
+- `4 Lightning Bolt (M10)` (con código de set)
+- `4 Lightning Bolt (M10) 123` (MTGA, con código de set y número de colección)
+- `4x Lightning Bolt` (con `x`)
+- `SB: 1 Surgical Extraction` (sideboard, se incluye en el total)
+
+Ignora cartas de tierra básica (Plains, Island, Swamp, Mountain, Forest y variantes).
+
+**Salida (`export.csv`):** Archivo CSV con columnas `Count,Name,SetCode,CollectorNumber` listo para importar en Moxfield.
+
+**Configuración opcional:** Soporta `database.json` para restar cartas que ya posees (mismo formato que las otras apps).
+
+**Uso:**
+```bash
+cd moxfield.app
+# Editar decks.txt con la lista de cartas a convertir
+python scraper.py
+# El resultado se guarda en export.csv
 ```
 
 ## Tech Stack

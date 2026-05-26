@@ -1,27 +1,25 @@
-import re
 import json
-from curl_cffi import requests
+import re
 
 BASIC_LANDS = {"Plains", "Island", "Swamp", "Mountain", "Forest"}
 
-with open('urls.json', 'r') as f:
-    urls = json.load(f)
+with open('decks.txt', 'r', encoding='utf-8') as f:
+    content = f.read()
 
+decks_text = content.strip().split('\n\n')
 all_cards = {}
 
-for url in urls:
-    txt_url = url.rstrip('/') + '/txt'
-    response = requests.get(txt_url, impersonate='chrome')
-    if response.status_code != 200:
-        print(f"Error {response.status_code} en {txt_url}")
+for deck_text in decks_text:
+    if not deck_text.strip():
         continue
-
-    for line in response.text.splitlines():
+    for line in deck_text.splitlines():
         line = line.strip()
-        match = re.match(r'^(\d+)\s+(.+)$', line)
-        if match:
-            qty = int(match.group(1))
-            name = match.group(2).strip()
+        if not line:
+            continue
+        m = re.match(r'^(\d+)\s+(.+)$', line)
+        if m:
+            qty = int(m.group(1))
+            name = m.group(2).strip()
             if name not in BASIC_LANDS:
                 all_cards[name] = max(all_cards.get(name, 0), qty)
 
@@ -29,13 +27,11 @@ db = {}
 db_empty = True
 try:
     with open('database.json', 'r', encoding='utf-8') as f:
-        content = f.read().strip()
-        if content:
-            data = json.loads(content)
-            if data:
-                for entry in data:
-                    db[entry['name']] = entry['quantity']
-                db_empty = False
+        data = json.load(f)
+        if data:
+            for entry in data:
+                db[entry['name']] = entry['quantity']
+            db_empty = False
 except FileNotFoundError:
     pass
 
