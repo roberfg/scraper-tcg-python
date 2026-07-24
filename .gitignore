@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 
 # Generated files
-export.txt
-database.json
+magic.app/export_*.txt
+pokemon.app/export_*.txt

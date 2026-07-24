@@ -1,0 +1,86 @@
+{
+  "Lillie's Determination|MEG|119": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Crispin|SCR|133": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Boss's Orders|MEG|114": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Dawn|PFL|87": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Ultra Ball|MEG|131": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Poké Pad|POR|81": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Buddy-Buddy Poffin|TEF|144": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Crushing Hammer|POR|71": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Night Stretcher|ASC|196": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Unfair Stamp|TWM|165": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Special Red Card|CRI|82": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Handheld Fan|TWM|150": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Team Rocket's Watchtower|DRI|180": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
+  },
+  "Jamming Tower|TWM|153": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
+  },
+  "Cyrano|SSP|170": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Black Belt's Training|JTG|143": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Transformation Tome|CRI|83": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "N's PP Up|JTG|153": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Secret Box|TWM|163": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Binding Mochi|PRE|95": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "N's Castle|JTG|152": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
+  }
+}
