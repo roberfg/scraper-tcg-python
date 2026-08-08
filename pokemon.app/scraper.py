@@ -1,5 +1,5 @@
-import argparse
 import json
+import os
 import re
 import time
 
@@ -18,6 +18,8 @@ SUBTYPE_TO_BUCKET = {
     "Tool": "tools",
     "Stadium": "stadiums",
 }
+
+TRAINER_BUCKETS = ("supporters", "items", "tools", "stadiums")
 
 HEADERS = {
     "User-Agent": "pokemon-app/1.0",
@@ -140,15 +142,65 @@ def scrape_decks(urls):
                 set_code, number = href_info
                 if section == "Energy" and name in BASIC_ENERGIES:
                     continue
-                key = (name, set_code, number)
-                for i, (k, q) in enumerate(aggregated[section]):
-                    if k == key:
-                        if qty > q:
-                            aggregated[section][i] = (key, qty)
+                entry = (name, set_code, number, qty)
+                for i, e in enumerate(aggregated[section]):
+                    if e[0] == name and e[1] == set_code and e[2] == number:
+                        if qty > e[3]:
+                            aggregated[section][i] = entry
                         break
                 else:
-                    aggregated[section].append((key, qty))
+                    aggregated[section].append(entry)
     return aggregated
+
+
+def read_collection(filename):
+    aggregated = {}
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or line.startswith("//"):
+                    continue
+                m = re.match(r"^(\d+)\s+(.+)$", line)
+                if not m:
+                    continue
+                qty = int(m.group(1))
+                name = m.group(2).strip()
+                aggregated[name] = aggregated.get(name, 0) + qty
+    except FileNotFoundError:
+        pass
+    return aggregated
+
+
+def write_collection_file(path, items):
+    with open(path, "w", encoding="utf-8") as f:
+        for name in sorted(items):
+            f.write(f"{items[name]} {name}\n")
+
+
+def prompt_and_update(path, card_name, mazo_qty):
+    existing = read_collection(path)
+    if existing.get(card_name, 0) > 0:
+        return max(0, mazo_qty - existing[card_name])
+
+    while True:
+        try:
+            resp = input(f"  ¿Tienes '{card_name}'? (Enter=no la tengo, número=cantidad): ").strip()
+        except EOFError:
+            return mazo_qty
+        if resp == "":
+            return mazo_qty
+        try:
+            qty = int(resp)
+            if qty < 0:
+                print("  La cantidad no puede ser negativa.")
+                continue
+        except ValueError:
+            print("  Entrada no válida, escribe un número o Enter.")
+            continue
+        existing[card_name] = existing.get(card_name, 0) + qty
+        write_collection_file(path, existing)
+        return max(0, mazo_qty - qty)
 
 
 def write_named(path, names):
@@ -157,50 +209,22 @@ def write_named(path, names):
             f.write(f"{name}\n")
 
 
-def merge_named(path, new_names):
-    existing = set()
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            for line in f:
-                name = line.strip()
-                if name:
-                    existing.add(name)
-    except FileNotFoundError:
-        pass
-    return sorted(existing | set(new_names))
+def write_buylist(path, items):
+    with open(path, "w", encoding="utf-8") as f:
+        for name in sorted(items):
+            f.write(f"{items[name]} {name}\n")
 
 
 def write_pokemon(path, items):
     with open(path, "w", encoding="utf-8") as f:
-        for (name, set_code, number), qty in sorted(items, key=lambda x: x[0][0]):
-            f.write(f"{qty} {name} ({set_code}-{number})\n")
-
-
-def read_existing(path):
-    existing = set()
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            for line in f:
-                name = line.strip()
-                if name:
-                    existing.add(name)
-    except FileNotFoundError:
-        pass
-    return existing
-
-
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--keep",
-        action="store_true",
-        help="Mantiene export_supporters.txt, export_items.txt, export_tools.txt, export_stadiums.txt y export_energies.txt existentes y solo agrega cartas nuevas (union aditiva, reorden alfabetico).",
-    )
-    return parser.parse_args()
+        for name, set_code, number, qty in sorted(items, key=lambda x: x[0]):
+            if set_code and number:
+                f.write(f"{qty} {name} ({set_code}-{number})\n")
+            else:
+                f.write(f"{qty} {name}\n")
 
 
 def main():
-    args = parse_args()
     urls = load_urls()
     aggregated = scrape_decks(urls)
     total = sum(len(v) for v in aggregated.values())
@@ -213,8 +237,7 @@ def main():
     cards_db = load_cards_db()
 
     supporters, items, tools, stadiums, trainer_unknown = [], [], [], [], []
-    for key, _qty in aggregated["Trainer"]:
-        name, set_code, number = key
+    for name, set_code, number, _qty in aggregated["Trainer"]:
         info, was_cached = fetch_card_subtype(name, set_code, number, cards_db)
         if not was_cached:
             time.sleep(0.12)
@@ -237,30 +260,49 @@ def main():
         json.dump(cards_db, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
-    write_pokemon("export_pokemon.txt", aggregated["Pokemon"])
-    print(f"  export_pokemon.txt: {len(aggregated['Pokemon'])} cartas")
+    energy_names = [name for name, _set, _num, _qty in aggregated["Energy"]]
 
-    write_named("export_trainer_unknown.txt", trainer_unknown)
-    print(f"  export_trainer_unknown.txt: {len(set(trainer_unknown))} cartas")
+    buylist_pokemon = {}
+    for name, _set, _num, qty in aggregated["Pokemon"]:
+        needed = prompt_and_update("collection_pokemon.txt", name, qty)
+        if needed > 0:
+            buylist_pokemon[name] = buylist_pokemon.get(name, 0) + needed
 
-    energy_names = [key[0] for key, _ in aggregated["Energy"]]
-    keep_paths = {
-        "export_supporters.txt": supporters,
-        "export_items.txt": items,
-        "export_tools.txt": tools,
-        "export_stadiums.txt": stadiums,
-        "export_energies.txt": energy_names,
-    }
-    for path, names in keep_paths.items():
-        if args.keep:
-            existing = read_existing(path)
-            merged = merge_named(path, names)
-            write_named(path, merged)
-            added = len(merged) - len(existing)
-            print(f"  {path}: {len(merged)} cartas ({added} nuevas, {len(existing)} mantenidas)")
-        else:
-            write_named(path, names)
-            print(f"  {path}: {len(set(names))} cartas")
+    buylist_trainers = {}
+    trainer_qtys = {name: qty for name, _set, _num, qty in aggregated["Trainer"]}
+    trainer_coll_path = {}
+    for name in supporters:
+        trainer_coll_path[name] = "collection_supporters.txt"
+    for name in items:
+        trainer_coll_path[name] = "collection_items.txt"
+    for name in tools:
+        trainer_coll_path[name] = "collection_tools.txt"
+    for name in stadiums:
+        trainer_coll_path[name] = "collection_stadiums.txt"
+    unknown_set = set(trainer_unknown)
+    for name, mazo_qty in trainer_qtys.items():
+        if name in unknown_set:
+            continue
+        coll_path = trainer_coll_path.get(name)
+        if coll_path is None:
+            continue
+        needed = prompt_and_update(coll_path, name, mazo_qty)
+        if needed > 0:
+            buylist_trainers[name] = buylist_trainers.get(name, 0) + needed
+
+    for name, _set, _num, qty in aggregated["Energy"]:
+        needed = prompt_and_update("collection_energies.txt", name, qty)
+        if needed > 0:
+            buylist_trainers[name] = buylist_trainers.get(name, 0) + needed
+
+    write_buylist("buylist_pokemon.txt", buylist_pokemon)
+    print(f"  buylist_pokemon.txt: {len(buylist_pokemon)} cartas")
+
+    write_buylist("buylist_trainers.txt", buylist_trainers)
+    print(f"  buylist_trainers.txt: {len(buylist_trainers)} cartas")
+
+    write_named("export_unknown.txt", trainer_unknown)
+    print(f"  export_unknown.txt: {len(set(trainer_unknown))} cartas")
 
 
 if __name__ == "__main__":

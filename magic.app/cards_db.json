@@ -253,7 +253,7 @@
   },
   "Kumano Faces Kakkazan": {
     "is_pauper": false,
-    "type_category": "creatures"
+    "type_category": "enchantments"
   },
   "Lava Dart": {
     "is_pauper": true,
@@ -1298,5 +1298,4165 @@
   "Wooded Ridgeline": {
     "is_pauper": true,
     "type_category": "lands"
+  },
+  "Abrupt Decay": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Adanto Vanguard": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Aether Gust": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Agadeem's Awakening": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Agatha's Soul Cauldron": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Agna Qel'a": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Agonasaur Rex": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Alchemist's Refuge": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Ambitious Farmhand": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "An Offer You Can't Refuse": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Analyze the Pollen": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Anax, Hardened in the Forge": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ancestral Anger": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Ancestral Vision": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Ancient Copper Dragon": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ancient Silver Dragon": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ancient Tomb": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Anger of the Gods": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Angrath's Rampage": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Anje's Ravager": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Annex Sentry": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Anoint with Affliction": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Ao, the Dawn Sky": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Apostle of Purifying Light": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Arcane Endeavor": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Arcane Signet": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Arcbound Javelineer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Arcbound Mouser": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Arcbound Prototype": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Arcbound Ravager": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Archfiend of the Dross": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Archmage's Charm": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Archpriest of Shadows": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Arclight Phoenix": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ardent Recruit": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Artist's Talent": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Assassin's Trophy": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Atsushi, the Blazing Sky": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Augur of Autumn": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Avacyn's Pilgrim": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Ba Sing Se": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Badgermole Cub": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Badlands": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Baleful Strix": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Baloth Prime": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Bamboozling Beeble": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Bane of Bala Ged": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Banishing Slash": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Barbarian Class": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Barrowgoyf": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Basalt Monolith": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Battlefield Forge": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Bayou": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Bazaar of Baghdad": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Beacon Bolt": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Beast Within": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Bedevil": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Behind the Mask": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Binding the Old Gods": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Birds of Paradise": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Black Mage's Rod": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Black Market": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Black Market Connections": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Black Vise": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Blackcleave Cliffs": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Blacksmith's Skill": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Bladecoil Serpent": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Blasphemous Act": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Blast Zone": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Blazing Volley": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Blessed Alliance": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Blood Crypt": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Bloodchief's Thirst": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Bloodtithe Harvester": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Bloodtracker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Bloom Tender": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Blooming Marsh": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Blossoming Tortoise": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Blue Sun's Twilight": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Boggart Ram-Gang": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Bomat Courier": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Bonecrusher Giant": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Boomerang": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Boomerang Basics": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Boros Charm": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Borrowed Time": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Braids, Arisen Nightmare": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Brazen Borrower": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Brazen Dwarf": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Breeding Pool": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Bring the Ending": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Bring to Light": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Bronze Guardian": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Brotherhood's End": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Brushfire Elemental": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Burnished Hart": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Burrenton Forge-Tender": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Butcher of Malakir": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Cabal Therapy": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Cabaretti Courtyard": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Cacophony Scamp": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Callous Sell-Sword": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Cancel": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Canyon Slough": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Carrion Feeder": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Cascade Bluffs": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Castle Locthwain": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Cathartic Reunion": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Censor": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Centaur Vinecrasher": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Chalice of the Void": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Chandra's Defeat": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Chandra's Ignition": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Chandra, Awakened Inferno": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Chandra, Torch of Defiance": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Change the Equation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Chaos Dragon": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Chaos Wand": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Chaos Warp": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Chasm Skulker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Chief of the Foundry": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Choking Miasma": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Chord of Calling": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Chromatic Sphere": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Chromatic Star": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Chrome Mox": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Cinder Glade": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Cinderclasm": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "City of Brass": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "City of Traitors": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Claim the Firstborn": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Clarion Conqueror": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Claws of Gix": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Clearwater Pathway": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Clifftop Retreat": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Cloudpost": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Collector Ouphe": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Colossal Dreadmask": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Colossal Skyturtle": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Command Tower": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Commander's Sphere": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Commercial District": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Consecrated Sphinx": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Consider": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Consult the Star Charts": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Contact Other Plane": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Convolute": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Cool but Rude": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Cori Mountain Monastery": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Corpse Appraiser": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Countersquall": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Cragcrown Pathway": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Crawling Barrens": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Creeping Tar Pit": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Cruel Edict": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Crumble to Dust": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Cry of the Carnarium": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Cultivate": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Curse of the Pierced Heart": {
+    "is_pauper": true,
+    "type_category": "enchantments"
+  },
+  "Cursed Scroll": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Cut Down": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Cut Short": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Cyclonic Rift": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Dakmor Salvage": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Damnation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Damping Sphere": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Dark Confidant": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Dark Depths": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Dark Petition": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Darkslick Shores": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Dauthi Voidwalker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Day of Judgment": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Daze": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Deafening Clarion": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Deafening Silence": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Death-Greeter's Champion": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Deduce": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Defiant Strike": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Delay": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Delighted Halfling": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Den Protector": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Depopulate": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Deputy of Detention": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Desolate Lighthouse": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Desperate Ritual": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Destroy Evil": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Devoted Druid": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Devourer of Destiny": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Dimir Signet": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Dispatch": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Dispeller's Capsule": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Disruptor Flute": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Divide by Zero": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Diviner's Portent": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Doorkeeper": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Dovin's Veto": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Dragonskull Summit": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Drana, Liberator of Malakir": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Dreadhorde Arcanist": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Dreadhorde Butcher": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Dress Down": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Drillworks Mole": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Drowned Catacomb": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Drownyard Temple": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Duelist of the Mind": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Dune Mover": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Dungeoneer's Pack": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Earthbender Ascension": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Ebony Fly": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Edgewall Innkeeper": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Eiganjo, Seat of the Empire": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Eladamri's Call": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Eldrazi Linebreaker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Eldrazi Obligator": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Eldrazi Temple": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Elegant Parlor": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Elspeth Resplendent": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Elvish Reclaimer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Elvish Spirit Guide": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Embercleave": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Embereth Shieldbreaker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Emergence Zone": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Empty the Warrens": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Emrakul, the Aeons Torn": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Emrakul, the Promised End": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Endurance": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Enduring Vitality": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Engineered Explosives": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Ensnaring Bridge": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Enter the God-Eternals": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Environmental Sciences": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Ertai Resurrected": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Escape Tunnel": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Escape to the Wilds": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Esper Origins": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Etali, Primal Storm": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Etched Champion": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Eumidian Hatchery": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Eumidian Wastewaker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Evendo Brushrazer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Evolving Wilds": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Experimental Synthesizer": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Exploration": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Exploration Broodship": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Explosive Vegetation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Extinction Event": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Extirpate": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Eye of Ugin": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Fable of the Mirror-Breaker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Fabled Passage": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Fabricate": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Fading Hope": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Fain, the Broker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Farideh, Devil's Chosen": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Farseek": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Fastbond": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Fatal Push": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Favored Hoplite": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Fear of Missing Out": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Feed the Cycle": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Fellwar Stone": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Fervent Champion": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Festering Thicket": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Feywild Trickster": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Field of Ruin": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Fierce Guardianship": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Fiery Impulse": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Finale of Devastation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Firebolt": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Flagstones of Trokair": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Flame Rift": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Flame Slash": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Flametongue Kavu": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Flayer of the Hatebound": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Flooded Strand": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Flunk": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Flusterstorm": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Fog Bank": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Force Spike": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Force of Negation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Force of Will": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Formidable Speaker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Formless Genesis": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Foundry of the Consuls": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "From Beyond": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Fugitive Codebreaker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Fulminator Mage": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Furnace Reins": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Gaea's Cradle": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Galvanic Iteration": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Galvanic Relay": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Garruk, Unleashed": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Gaze of Granite": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Gemstone Caverns": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Get Lost": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Geth's Grimoire": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Ghost Quarter": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Gilded Drake": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Gingerbrute": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Gird for Battle": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Gitaxian Probe": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Gix's Command": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Gix, Yawgmoth Praetor": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Glacial Chasm": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Glacial Fortress": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Glacial Wall": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Glaring Fleshraker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Glass Casket": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Glen Elendra Archmage": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Glimmerpost": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Glimpse the Impossible": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Glissa Sunslayer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Go Blank": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Goblin Bombardment": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Goblin Dark-Dwellers": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "God-Eternal Bontu": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Godless Shrine": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Gods Willing": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Goldspan Dragon": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Grafdigger's Cage": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Grapeshot": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Grasp of Darkness": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Graven Cairns": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Grim Haruspex": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Grim Monolith": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Grip of Amnesia": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Ground Seal": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Groundskeeper": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Gruff Triplets": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Guard Gomazoa": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Guildmages' Forum": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Gut, True Soul Zealot": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Hagra Constrictor": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Hagra Mauling": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hall of Storm Giants": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hall of Tagsin": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hallowed Fountain": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hammer of Purphoros": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Hangarback Walker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Harrow": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Haunted Ridge": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Haywire Mite": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Heap Doll": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Heartfire Hero": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Hearthhull, the Worldseed": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Hedron Archive": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Heliod, Sun-Crowned": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Hellkite Tyrant": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Hexdrinker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "High Market": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hinterland Harbor": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hissing Quagmire": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hive of the Eye Tyrant": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hoarding Ogre": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Homeward Path": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Hope of Ghirapur": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Horizon Canopy": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Horizon Explorer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Hullbreaker Horror": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Hushwood Verge": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Icetill Explorer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Immersturm Predator": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Implement of Combustion": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Implement of Improvement": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Improvised Club": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Indatha Triome": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Inexorable Tide": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Infernal Grasp": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Infinite Obliteration": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Ingenious Smith": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Inquisition of Kozilek": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Inscription of Abundance": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Inspiring Vantage": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Into the Flood Maw": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Invasion of Azgol": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Invasion of Ikoria": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Invoke Despair": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Izzet Boilerworks": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Izzet Charm": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Izzet Signet": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Izzet Staticaster": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Jace, Vryn's Prodigy": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Jaddi Offshoot": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Jetmir's Garden": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Jin-Gitaxias, Core Augur": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Jinxed Idol": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Juri, Master of the Revue": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Jwari Disruption": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Kaito, Bane of Nightmares": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Kalain, Reclusive Painter": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kalitas, Traitor of Ghet": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kambal, Consul of Allocation": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kappa Cannoneer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Karakas": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Karn Liberated": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Karn, the Great Creator": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Karplusan Forest": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Kazandu Mammoth": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Keldon Marauders": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Ketria Triome": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Kinnan, Bonder Prodigy": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kird Ape": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Kitsa, Otterball Elite": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Klothys, God of Destiny": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Knight of Autumn": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Knight of the Reliquary": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kogla and Yidaro": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kogla, the Titan Ape": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kolaghan's Command": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Koma, Cosmos Serpent": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kona, Rescue Beastie": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kor Firewalker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Korvold, Fae-Cursed King": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Kozilek's Command": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Kozilek's Return": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Krenko's Buzzcrusher": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Krosan Grip": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Laelia, the Blade Reforged": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Languish": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Lava Coil": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Lava Spike": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Lavaspur Boots": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Lay Down Arms": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Leaf Gilder": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Ledger Shredder": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Legion Warboss": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Legolas's Quick Reflexes": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Leonin Elder": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Leyline Binding": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Leyline of the Void": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Library of Alexandria": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Lier, Disciple of the Drowned": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Life from the Loam": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Light Up the Stage": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Light of Hope": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Lightning Axe": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Lightning Greaves": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Lightning Helix": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Liliana of the Veil": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Liliana, Dreadhorde General": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Liquimetal Coating": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Liquimetal Torque": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Llanowar Wastes": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Loamcrafter Faun": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Lofty Denial": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Loran of the Third Path": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Lotus Petal": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Lovestruck Beast": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Lurrus of the Dream-Den": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Luxury Suite": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Maddening Hex": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Maelstrom Pulse": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Maestros Theater": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Mahadi, Emporium Master": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Make Disappear": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Malakir Rebirth": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mana Confluence": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mana Drain": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Mana Leak": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Mana Vault": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Manabond": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Manamorphose": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Mandible Justiciar": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "March of Otherworldly Light": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "March of Swirling Mist": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Marchesa, the Black Rose": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Mascot Exhibition": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Massacre": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Mayhem Devil": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Maze of Ith": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mazirek, Kraul Death Priest": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Memnarch": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Memnite": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Memory Deluge": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Memory Drain": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Memory Lapse": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Mental Misstep": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Metallic Rebuke": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Michiko's Reign of Truth": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Midnight Clock": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Midnight Reaper": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Might of the Meek": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Mightform Harmonizer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Mikaeus, the Unhallowed": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Minamo, School at Water's Edge": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mind's Eye": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mindbreak Trap": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Mine Collapse": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Mirage Mirror": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mirran Banesplitter": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Mirran Crusader": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Mirrex": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Miscalculation": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Mishra's Factory": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mishra's Foundry": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mistrise Village": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Misty Rainforest": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Molten Rain": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Moment of Craving": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Monitor Monitor": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Moonsilver Key": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Moraug, Fury of Akoum": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Morphic Pool": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mosswood Dreadknight": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Mountain Valley": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mox Amber": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mox Diamond": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mox Emerald": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mox Jet": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mox Opal": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mox Pearl": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mulldrifter": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Multani, Yavimaya's Avatar": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Multiversal Passage": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Murktide Regent": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Mycosynth Lattice": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Myr Retriever": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Myr Scrapling": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Myriad Landscape": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mystic Forge": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Mystic Remora": {
+    "is_pauper": true,
+    "type_category": "enchantments"
+  },
+  "Mystical Dispute": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Nahiri, the Harbinger": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Narset, Parter of Veils": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Naturalize": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Nature's Claim": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Nature's Lore": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Needleverge Pathway": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Negate": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Netherese Puzzle-Ward": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Nettlecyst": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Nezahal, Primal Tide": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Nicol Bolas, Dragon-God": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Nicol Bolas, the Ravager": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Night's Whisper": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Nissa's Pilgrimage": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Nissa's Renewal": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Nissa, Ascended Animist": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Nissa, Vastwood Seer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Niv-Mizzet Reborn": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Niv-Mizzet, Parun": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Niv-Mizzet, Supreme": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Notion Thief": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Nowhere to Run": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Null Rod": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Nyxbloom Ancient": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Oath of Nissa": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Ob Nixilis Reignited": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Oblivion Stone": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Oliphaunt": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Olivia, Mobilized for War": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Omnath, Locus of Creation": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Omnath, Locus of Rage": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Once Upon a Time": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Oracle of Mul Daya": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Orcish Bowmasters": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Origin of Metalbending": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Orim's Chant": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Ornithopter": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Ossification": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Otherworldly Gaze": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Outland Liberator": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ox of Agonas": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Pact of Negation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Padeem, Consul of Innovation": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Painful Truths": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Past in Flames": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Patchwork Automaton": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Path to Exile": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Personal Tutor": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Pest Infestation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Phoenix of Ash": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Phyrexian Arena": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Phyrexian Metamorph": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Phyrexian Missionary": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Phyrexian Reclamation": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Phyrexian Revoker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Phyrexian Tower": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Pia and Kiran Nalaar": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Pick the Brain": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Pinnacle Emissary": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Pithing Needle": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Pixie Guide": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Planar Nexus": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Planetary Annihilation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Plumb the Forbidden": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Polluted Delta": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Pollywog Prodigy": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Postmortem Lunge": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Power Word Kill": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Preacher of the Schism": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Prismari Command": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Prismatic Ending": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Proft's Eidetic Memory": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Putrefy": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Pyretic Ritual": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Pyrokinesis": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Quakebringer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Quench": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Questing Beast": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Radha, Heart of Keld": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Raffine's Tower": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Rakdos Carnarium": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Rakdos Charm": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Rakdos Signet": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Ral, Monsoon Mage": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Rampaging Baloths": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Rampaging Ferocidon": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Rampaging Raptor": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ramunap Excavator": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ranger-Captain of Eos": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ratchet Bomb": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Ratchet, Field Medic": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Rattleclaw Mystic": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Raugrin Triome": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Read the Bones": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Reality Smasher": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Reanimate": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Reasonable Doubt": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Reckless Endeavor": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Reckoner Bankbuster": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Reclusive Artificer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Recommission": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Rejuvenating Springs": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Relic's Roar": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Reliquary Tower": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Rending Volley": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Resculpt": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Restless Cottage": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Restless Prairie": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Rhystic Study": {
+    "is_pauper": true,
+    "type_category": "enchantments"
+  },
+  "Rift Bolt": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Riftstone Portal": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Rimrock Knight": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Rites of Refusal": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Ritual of Soot": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "River Kelpie": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Riverglide Pathway": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Riveteers Overlook": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Roadside Reliquary": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Robber of the Rich": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Rocky Tar Pit": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Roiling Regrowth": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Roiling Vortex": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Rootbound Crag": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Royal Treatment": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Ruby Medallion": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Ruinous Path": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Run Afoul": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Runaway Steam-Kin": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sacred Foundry": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Saiba Cryptomancer": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Sanctuary Warden": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sanctum of Ugin": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sanwell, Avenger Ace": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Satyr Wayfinder": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Savai Triome": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Savannah": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Saw It Coming": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Scavenging Ooze": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Scent of Brine": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Scorch Spitter": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Scorching Dragonfire": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Scorn-Blade Berserker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Scouring Swarm": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Scrap Mastery": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Scrap Trawler": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Scrapshooter": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sculpting Steel": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Sea Gate Restoration": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Seam Rip": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Search for Azcanta": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Seasons Past": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Secluded Courtyard": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Second Guess": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Seedborn Muse": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sejiri Steppe": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Selfless Glyphweaver": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Serra Paragon": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sevinne's Reclamation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Shadows' Verdict": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Shatterskull Smashing": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sheltered Thicket": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sheoldred's Edict": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Sheoldred, the Apocalypse": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Shipwreck Marsh": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Shivan Reef": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Shock": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Shore Up": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Shrine of the Forsaken Gods": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sign in Blood": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Signal Pest": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Simian Spirit Guide": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Simic Signet": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Sinister Sabotage": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Sink into Stupor": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Siphon Insight": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Sire of Seven Deaths": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Skewer the Critics": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Skullclamp": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Skyclave Shadowcat": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Skyclave Squid": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Skyshroud Claim": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Skyshroud Elite": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Slip Out the Back": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Smoldering Marsh": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Snapcaster Mage": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sol Ring": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Solemn Simulacrum": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Soul Partition": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Soul Shatter": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Soul Transfer": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Soul of Windgrace": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Soulstone Sanctuary": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sowing Mycospawn": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Spara's Headquarters": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sparring Construct": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Spectrum Sentinel": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Spike Feeder": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Spirited Companion": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Splendid Reclamation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Springbloom Druid": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Springleaf Drum": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Sprouting Goblin": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Staff of Domination": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Staff of the Storyteller": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Steamcore Scholar": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Steel Overseer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Steel Seraph": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Stomping Ground": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Stonecoil Serpent": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Stony Silence": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Stormchaser's Talent": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Stormscale Scion": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Strionic Resonator": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Strip Mine": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Strix Serenade": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Sulfur Falls": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sulfuric Vortex": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Sulfurous Springs": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sunbeam Spellbomb": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Sundering Titan": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sunfall": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Sungold Sentinel": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sunpetal Grove": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Surrak, Elusive Hunter": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Suture Priest": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Swan Song": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Swiftfoot Boots": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Swooping Lookout": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sword Coast Sailor": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Sword of Hours": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Sword of the Animist": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Swords to Plowshares": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Sylvan Caryatid": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sylvan Library": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Sylvan Safekeeper": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sylvan Scrying": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Szarel, Genesis Shepherd": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Taiga": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Takenuma, Abandoned Mire": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Talisman of Curiosity": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Talisman of Impulse": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Talon Gates of Madara": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Tamiyo, Inquisitive Student": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Tarmogoyf": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Tasigur, the Golden Fang": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Teachings of the Archaics": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Tear Asunder": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Teferi, Hero of Dominaria": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Teferi, Master of Time": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Teferi, Time Raveler": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Telekinesis": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Tempered Steel": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Temple Garden": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Temple of Epiphany": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Tenth District Legionnaire": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Terramorphic Expanse": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Territorial Kavu": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Tersa Lightshatter": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Tezzeret the Seeker": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "The Akroan War": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "The Autonomous Furnace": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "The Celestus": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "The Deck of Many Things": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "The Gitrog Monster": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "The Great Henge": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "The One Ring": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "The Scarab God": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "The Tabernacle at Pendrell Vale": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "The Unagi of Kyoshi Island": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "The Wandering Emperor": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Thespian's Stage": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Thing in the Ice": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Thirst for Knowledge": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Thopter Spy Network": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Thought Erasure": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Thought-Knot Seer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Thoughtseize": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Thragtusk": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Thran Portal": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Thran Vigil": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Thrasios, Triton Hero": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Thunderheads": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Thunderous Wrath": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Thunderwave": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Tibalt's Trickery": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Tibalt, Rakish Instigator": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Tidespout Tyrant": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Tin Street Dodger": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Tireless Tracker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Titan's Strength": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Titania, Protector of Argoth": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "To the Slaughter": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Toolcraft Exemplar": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Torbran, Thane of Red Fell": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Torpor Orb": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Training Center": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Tranquil Frillback": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Transgress the Mind": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Treasure Chest": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Treasure Cruise": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Treasure Vault": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Trickbind": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Trophy Mage": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Tropical Island": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Turntimber Symbiosis": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Twilight Mire": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Tyrant's Scorn": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Ugin's Labyrinth": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Ugin, Eye of the Storms": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Ugin, the Ineffable": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Ugin, the Spirit Dragon": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Ulamog, the Ceaseless Hunger": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ultimate Price": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Umezawa's Jitte": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Unchained Berserker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Undercity Sewers": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Underdark Rift": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Underground Sea": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Unholy Annex/Ritual Chamber": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Unlicensed Hearse": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Unmoored Ego": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Untimely Malfunction": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Unwinding Clock": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Up the Beanstalk": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Urza's Sylex": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Uurg, Spawn of Turg": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Valakut Awakening": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Valakut Exploration": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Valki, God of Lies": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Valley Floodcaller": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Vandalblast": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Vanishing Verse": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Vedalken Squirrel-Whacker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Veil of Summer": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Verdant Catacombs": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Vernal Fen": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Vesuva": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Vexing Puzzlebox": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Vexing Shusher": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Viridescent Bog": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Virulent Plague": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Vivien Reid": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Vivien, Monsters' Advocate": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Vizier of Remedies": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Voice of Resurgence": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Voice of the Blessed": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Void Winnower": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Voldaren Thrillseeker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Vraska's Contempt": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Vraska, Betrayal's Sting": {
+    "is_pauper": false,
+    "type_category": "planeswalkers"
+  },
+  "Walking Ballista": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Wan Shi Tong, Librarian": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Wand of Wonder": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Wandering Archaic": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Wandering Mind": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Warping Wail": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Wasteland": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Wastescape Battlemage": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Waterlogged Grove": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Watery Grave": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Wayfarer's Bauble": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Weapons Manufacturing": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Wear Down": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Wear/Tear": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Wedding Announcement": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Welding Jar": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Well-Laid Plans": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Whipflare": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Whisperwood Elemental": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Wild Magic Surge": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Wildborn Preserver": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Wilt": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Windgrace's Judgment": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Winds of Qal Sisma": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Windstorm": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Windswept Heath": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Winternight Stories": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Wish": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Witchstalker Frenzy": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Wizard's Spellbook": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Woodland Cemetery": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "World Breaker": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Worldly Tutor": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Worldsoul's Rage": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Wrenn's Resolve": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Wurmcoil Engine": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Wyll's Reversal": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Wyll, Blade of Frontiers": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Xander's Lounge": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Yahenni, Undying Partisan": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Yavimaya Coast": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Yavimaya, Cradle of Growth": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Yawgmoth, Thran Physician": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Yorion, Sky Nomad": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Yotian Frontliner": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "You Meet in a Tavern": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "You See a Guard Approach": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Zagoth Triome": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Zenith Chronicler": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Ziatora's Proving Ground": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Zuran Orb": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Elvish Mystic": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Eternal Witness": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Isochron Scepter": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Natural State": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Nylea's Disciple": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Oxidize": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Scattershot Archer": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Tel-Jilad Justice": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "The Filigree Sylex": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Treetop Village": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Viridian Longbow": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Voltaic Key": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Winter Moon": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Curiosity": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Gelectrode": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Misdirection": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Mystic Sanctuary": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Volcanic Island": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Broadside Barrage": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Slagstorm": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Accursed Marauder": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Agony Warp": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Birchlore Rangers": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Bitter Reunion": {
+    "is_pauper": true,
+    "type_category": "enchantments"
+  },
+  "Contaminated Landscape": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Crimson Fleet Commodore": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Cryogen Relic": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Crypt Rats": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Defile": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Desert": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Flowstone Infusion": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Fungal Infection": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Ghostly Flicker": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Holy Light": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Jaspera Sentinel": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Land Grant": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Lorien Revealed": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Mutavault": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Mysidian Elder": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Polluted Mire": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Primordial Pachyderm": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Prophetic Prism": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Ramosian Rally": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Rancid Earth": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Rejuvenation Chamber": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Rooftop Percher": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Searing Blaze": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Spider-Man, Web-Slinger": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Surgical Skullbomb": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Tectonic Hazard": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Troll of Khazad-dum": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Weathered Runestone": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Witch's Cottage": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Dryad of the Ilysian Grove": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Valakut, the Molten Pinnacle": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Vexing Bauble": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Abandon Attachments": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Academic Dispute": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Accumulate Wisdom": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Basking Broodscale": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Bitter Triumph": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Blade of the Bloodchief": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Boltwave": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Bounce Off": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Cache Grab": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Caves of Koilos": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Collective Brutality": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Combustion Technique": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Concealed Courtyard": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Decorum Dissertation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Deflecting Palm": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Eidolon of the Great Revel": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Emeritus of Ideation": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Emptiness": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Enter the Avatar State": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Esika's Chariot": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Exquisite Firecraft": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Firebending Lesson": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Flashback": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Goblin Guide": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Gran-Gran": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Greasefang, Okiba Boss": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Great Hall of the Biblioplex": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Grove of the Burnwillows": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Ill-Timed Explosion": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Iroh's Demonstration": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "It'll Quench Ya!": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Jennifer Walters": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Jeskai Revelation": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Octopus Form": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Overlord of the Balemurk": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Parhelion II": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Pest Control": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Petrified Hamlet": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Price of Freedom": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Professor of Symbology": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Quantum Riddler": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Return the Favor": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Roaring Furnace/Steaming Sauna": {
+    "is_pauper": false,
+    "type_category": "enchantments"
+  },
+  "Sear": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Searing Blood": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Secret Identity": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Severance Priest": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Skullcrack": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Skysovereign, Consul Flagship": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Soulless Jailer": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Sunbaked Canyon": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Sundown Pass": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Tablet of Discovery": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Thief of Existence": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Thor, God of Thunder": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Three Steps Ahead": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Thundering Broodwagon": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "True Ancestry": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Vibrant Outburst": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Witherbloom Command": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Yathan Roadwatcher": {
+    "is_pauper": false,
+    "type_category": "creatures"
   }
 }

@@ -160,5 +160,10 @@ cython_debug/
 #.idea/
 
 # Generated files
-magic.app/export_*.txt
-pokemon.app/export_*.txt
+magic.app/buylist_*.txt
+magic.app/collection_*.txt
+magic.app/decks/
+magic.app/.venv_dbg/
+pokemon.app/buylist_*.txt
+pokemon.app/collection_*.txt
+pokemon.app/export_unknown.txt

@@ -1,10 +1,9 @@
-import argparse
 import json
+import os
 import re
 import time
 
 import requests
-from curl_cffi import requests as cffi_requests
 
 BASIC_LANDS = {
     "Plains", "Island", "Swamp", "Mountain", "Forest",
@@ -94,11 +93,6 @@ def fetch_card_info(name, cards_db):
     return info, False
 
 
-def load_urls():
-    with open("urls.json", "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
 def load_cards_db():
     try:
         with open("cards_db.json", "r", encoding="utf-8") as f:
@@ -110,69 +104,123 @@ def load_cards_db():
     return {}
 
 
-def scrape_decks(urls):
+def read_deck_file(path):
     aggregated = {}
-    for url in urls:
-        txt_url = url.rstrip("/") + "/txt"
-        print(f"-> {txt_url}")
-        try:
-            resp = cffi_requests.get(txt_url, impersonate="chrome")
-        except Exception as e:
-            print(f"  ! Error de red: {e}")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+    except FileNotFoundError:
+        print(f"  ! Archivo no encontrado: {path}")
+        return aggregated
+    for line in content.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or line.startswith("//"):
             continue
-        if resp.status_code != 200:
-            print(f"  ! HTTP {resp.status_code}")
+        parsed = parse_card_line(line)
+        if not parsed:
             continue
-        for line in resp.text.splitlines():
-            parsed = parse_card_line(line)
-            if not parsed:
-                continue
-            qty, name = parsed
-            if name in BASIC_LANDS:
-                continue
+        qty, name = parsed
+        if name in BASIC_LANDS:
+            continue
+        aggregated[name] = max(aggregated.get(name, 0), qty)
+    return aggregated
+
+
+def read_decks_from_dir(decks_dir="decks"):
+    if not os.path.isdir(decks_dir):
+        print(f"  ! Carpeta no encontrada: {decks_dir}")
+        return {}
+    aggregated = {}
+    files = sorted(f for f in os.listdir(decks_dir) if f.endswith(".txt"))
+    if not files:
+        print(f"  ! No hay archivos .txt en {decks_dir}/")
+        return aggregated
+    for filename in files:
+        path = os.path.join(decks_dir, filename)
+        print(f"-> file: {path}")
+        partial = read_deck_file(path)
+        for name, qty in partial.items():
             aggregated[name] = max(aggregated.get(name, 0), qty)
     return aggregated
 
 
-def write_export_counted(path, items):
+def read_collection(category, kind):
+    path = f"collection_{kind}_{category}.txt"
+    aggregated = {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or line.startswith("//"):
+                    continue
+                parsed = parse_card_line(line)
+                if not parsed:
+                    continue
+                qty, name = parsed
+                aggregated[name] = aggregated.get(name, 0) + qty
+    except FileNotFoundError:
+        pass
+    return aggregated
+
+
+def read_collection_file(path):
+    aggregated = {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or line.startswith("//"):
+                    continue
+                m = re.match(r"^(\d+)\s+(.+)$", line)
+                if not m:
+                    continue
+                qty = int(m.group(1))
+                name = m.group(2).strip()
+                aggregated[name] = aggregated.get(name, 0) + qty
+    except FileNotFoundError:
+        pass
+    return aggregated
+
+
+def write_collection_file(path, items):
     with open(path, "w", encoding="utf-8") as f:
         for name in sorted(items):
             f.write(f"{items[name]} {name}\n")
 
 
-def write_export_named(path, names):
+def prompt_and_update(path, card_name, mazo_qty):
+    existing = read_collection_file(path)
+    if existing.get(card_name, 0) > 0:
+        return max(0, mazo_qty - existing[card_name])
+
+    while True:
+        try:
+            resp = input(f"  ¿Tienes '{card_name}'? (Enter=no la tengo, número=cantidad): ").strip()
+        except EOFError:
+            return mazo_qty
+        if resp == "":
+            return mazo_qty
+        try:
+            qty = int(resp)
+            if qty < 0:
+                print("  La cantidad no puede ser negativa.")
+                continue
+        except ValueError:
+            print("  Entrada no válida, escribe un número o Enter.")
+            continue
+        existing[card_name] = existing.get(card_name, 0) + qty
+        write_collection_file(path, existing)
+        return max(0, mazo_qty - qty)
+
+
+def write_buylist(path, items):
     with open(path, "w", encoding="utf-8") as f:
-        for name in sorted(names):
-            f.write(f"{name}\n")
-
-
-def merge_named(path, new_names):
-    existing = set()
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            for line in f:
-                name = line.strip()
-                if name:
-                    existing.add(name)
-    except FileNotFoundError:
-        pass
-    return sorted(existing | set(new_names))
-
-
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--keep",
-        action="store_true",
-        help="Mantiene los export_pauper_*.txt y export_unknown.txt existentes y solo agrega cartas nuevas (union aditiva, reorden alfabetico).",
-    )
-    return parser.parse_args()
+        for name in sorted(items):
+            f.write(f"{items[name]} {name}\n")
 
 
 def main():
-    args = parse_args()
-    urls = load_urls()
-    all_cards = scrape_decks(urls)
+    all_cards = read_decks_from_dir("decks")
     print(f"Cartas unicas (excluyendo basicas): {len(all_cards)}")
 
     if not all_cards:
@@ -181,7 +229,7 @@ def main():
 
     cards_db = load_cards_db()
 
-    buckets = {cat: {"pauper": set(), "nopauper": {}} for cat in CATEGORIES}
+    buckets = {cat: {"pauper": {}, "nopauper": {}} for cat in CATEGORIES}
     unknown = set()
 
     for name in sorted(all_cards):
@@ -196,7 +244,7 @@ def main():
             unknown.add(name)
             continue
         if info["is_pauper"]:
-            buckets[category]["pauper"].add(name)
+            buckets[category]["pauper"][name] = all_cards[name]
         else:
             buckets[category]["nopauper"][name] = all_cards[name]
 
@@ -204,49 +252,33 @@ def main():
         json.dump(cards_db, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
+    buylist_pauper = {}
+    buylist_nopauper = {}
+
     for category in CATEGORIES:
-        nopauper_path = f"export_nopauper_{category}.txt"
-        write_export_counted(nopauper_path, buckets[category]["nopauper"])
-        print(f"  {nopauper_path}: {len(buckets[category]['nopauper'])} cartas")
+        coll_path_p = f"collection_pauper_{category}.txt"
+        for name, mazo_qty in buckets[category]["pauper"].items():
+            needed = prompt_and_update(coll_path_p, name, mazo_qty)
+            if needed > 0:
+                buylist_pauper[name] = buylist_pauper.get(name, 0) + needed
 
-        pauper_path = f"export_pauper_{category}.txt"
-        if args.keep:
-            new_names = buckets[category]["pauper"]
-            existing = set()
-            try:
-                with open(pauper_path, "r", encoding="utf-8") as f:
-                    for line in f:
-                        name = line.strip()
-                        if name:
-                            existing.add(name)
-            except FileNotFoundError:
-                pass
-            merged = merge_named(pauper_path, new_names)
-            write_export_named(pauper_path, merged)
-            added = len(merged) - len(existing)
-            print(f"  {pauper_path}: {len(merged)} cartas ({added} nuevas, {len(existing)} mantenidas)")
-        else:
-            write_export_named(pauper_path, buckets[category]["pauper"])
-            print(f"  {pauper_path}: {len(buckets[category]['pauper'])} cartas")
+        coll_path_np = f"collection_nopauper_{category}.txt"
+        for name, mazo_qty in buckets[category]["nopauper"].items():
+            needed = prompt_and_update(coll_path_np, name, mazo_qty)
+            if needed > 0:
+                buylist_nopauper[name] = buylist_nopauper.get(name, 0) + needed
 
-    unknown_path = "export_unknown.txt"
-    if args.keep:
-        existing_unknown = set()
-        try:
-            with open(unknown_path, "r", encoding="utf-8") as f:
-                for line in f:
-                    name = line.strip()
-                    if name:
-                        existing_unknown.add(name)
-        except FileNotFoundError:
-            pass
-        merged_unknown = merge_named(unknown_path, unknown)
-        write_export_named(unknown_path, merged_unknown)
-        added_u = len(merged_unknown) - len(existing_unknown)
-        print(f"  {unknown_path}: {len(merged_unknown)} cartas ({added_u} nuevas, {len(existing_unknown)} mantenidas)")
-    else:
-        write_export_named(unknown_path, unknown)
-        print(f"  {unknown_path}: {len(unknown)} cartas")
+    write_buylist("buylist_pauper.txt", buylist_pauper)
+    print(f"  buylist_pauper.txt: {len(buylist_pauper)} cartas")
+
+    write_buylist("buylist_nopauper.txt", buylist_nopauper)
+    print(f"  buylist_nopauper.txt: {len(buylist_nopauper)} cartas")
+
+    if unknown:
+        with open("export_unknown.txt", "w", encoding="utf-8") as f:
+            for name in sorted(unknown):
+                f.write(f"{name}\n")
+        print(f"  export_unknown.txt: {len(unknown)} cartas")
 
 
 if __name__ == "__main__":

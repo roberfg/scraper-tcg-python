@@ -82,5 +82,33 @@
   "N's Castle|JTG|152": {
     "supertype": "Trainer",
     "subtype": "Stadium"
+  },
+  "Rare Candy|MEG|125": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Sparkling Crystal|SCR|142": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Janine's Secret Art|PRE|112": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Xerosic's Machinations|SFA|64": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Energy Switch|MEG|115": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Hero's Cape|TEF|152": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Poke Pad|POR|81": {
+    "supertype": "Trainer",
+    "subtype": "Item"
   }
 }
