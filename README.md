@@ -6,14 +6,14 @@ Scripts para actualizar colecciones de cartas de Magic: The Gathering y Pokémon
 
 El proyecto contiene dos apps independientes:
 
-- **`magic.app/`**: lee mazos de Magic desde URLs de `mtgdecks.net`, suma las cantidades por carta y clasifica cada carta por **legalidad Pauper** y **tipo** (criatura, instantáneo/conjuro, planeswalker, artefacto, encantamiento, tierra) consultando la API de Scryfall. Tierras básicas se ignoran.
-- **`pokemon.app/`**: scrapea decklists de Pokémon desde Limitless TCG (`play.limitlesstcg.com`), separa Pokémon de Trainers y subclasifica los Trainers en **Supporter / Item / Tool / Stadium** consultando `limitlesstcg.com`. Energías básicas se ignoran.
+- **`magic.app/`**: lee mazos de Magic desde `decks/decks.yaml` y archivos locales `.txt`, clasifica cada carta por **legalidad Pauper** y **tipo** (criatura, instantáneo/conjuro, planeswalker, artefacto, encantamiento, tierra) consultando la API de Scryfall y genera las salidas en `exports/`. Tierras básicas se ignoran.
+- **`pokemon.app/`**: scrapea listas de Pokémon desde Limitless TCG (`play.limitlesstcg.com`), separa Pokémon de Trainers y subclasifica los Trainers en **Supporter / Item / Tool / Stadium** consultando `limitlesstcg.com`. Energías básicas se ignoran.
 
 ## Apps disponibles
 
 | Carpeta | Juego | Fuente |
 |---|---|---|
-| `magic.app/` | Magic: The Gathering | `mtgdecks.net` + Scryfall |
+| `magic.app/` | Magic: The Gathering | Listas locales + Scryfall |
 | `pokemon.app/` | Pokemon TCG | `play.limitlesstcg.com` + `limitlesstcg.com` |
 
 ## Requisitos
@@ -32,83 +32,72 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Dependencias principales: `requests`, `beautifulsoup4`, `curl_cffi`.
+Dependencias principales: `requests`, `beautifulsoup4`, `PyYAML`.
 
 ## Uso
 
 ```bash
 # Magic
-(cd magic.app && python scraper.py && python merger.py)
+(cd magic.app && python scraper.py)
 
 # Pokémon
-(cd pokemon.app && python scraper.py && python merger.py)
+(cd pokemon.app && python scraper.py)
 ```
 
 ## Salida
 
 ### `magic.app`
 
-Lee las URLs de `urls.json`, descarga la versión de texto de cada mazo desde `mtgdecks.net` y clasifica cada carta por tipo y legalidad Pauper consultando Scryfall con cache en `cards_db.json`.
+Lee `decks/decks.yaml`, procesa las listas locales de `decks/*.txt` y clasifica las cartas por legalidad Pauper y tipo consultando Scryfall.
 
-La estructura de datos es:
+La salida se regenera directamente en `exports/`:
 
 ```text
 magic.app/
-├── pauper/
-│   ├── collection/
-│   └── export/
-└── no_pauper/
-    ├── collection/
-    └── export/
+├── decks/
+│   ├── decks.yaml
+│   └── Deck - Nombre del mazo.txt
+├── cards_db.json
+└── exports/
+    ├── collection_artifacts.txt
+    ├── collection_creatures.txt
+    ├── collection_enchantments.txt
+    ├── collection_lands.txt
+    ├── collection_planeswalkers.txt
+    ├── collection_spells.txt
+    ├── deck_modern_izzet_prowess.txt
+    └── unknown.txt
 ```
 
-**Archivos actualizados:**
-- `<formato>/collection/<tipo>.txt` — cartas que ya tienes, con formato `<cantidad> <nombre>`.
-- `<formato>/export/<tipo>.txt` — cartas o copias que faltan para cubrir los mazos.
-- `<formato>/export/unknown.txt` — cartas que Scryfall no pudo resolver.
-- `decks_cache.json` — información descargada de cada URL para evitar consultas repetidas.
+- `collection_<tipo>.txt` contiene las cartas Pauper agrupadas por tipo. Si una carta aparece en varios mazos, se conserva la cantidad máxima.
+- `deck_<formato>_<mazo>.txt` contiene las cartas no Pauper de cada mazo, en el orden original.
+- Las cartas no Pauper que ya aparecieron en un mazo anterior incluyen una referencia a su primera aparición, por ejemplo `4 Arid Mesa (4 en deck_standard_boros_algo)`.
+- `unknown.txt` contiene una sola vez cada carta que Scryfall no pudo resolver o clasificar.
+- Todos los archivos `.txt` anteriores de `exports/` se eliminan y regeneran en cada ejecución.
 
-El script crea automáticamente las carpetas y los archivos de exportación que no existan. El valor `<formato>` es `pauper` o `no_pauper`.
+**Formato de `decks/decks.yaml`:**
 
-**Archivos de entrada que mantiene el usuario:**
-- `urls.json` — URLs de los mazos de `mtgdecks.net`.
-- `<formato>/collection/<tipo>.txt` (6 archivos: `creatures`, `spells`, `planeswalkers`, `artifacts`, `enchantments`, `lands`) — cartas que ya tienes, formato `<cantidad> <nombre>`.
-
-Los archivos `urls.json`, `collection/` y `export/` no están excluidos por `.gitignore` y pueden mantenerse en el repositorio.
-
-**Generación de exportación por carta:**
-- `collection/` no se modifica automáticamente.
-- Se exporta `max(cantidad_en_mazo - cantidad_en_collection, 0)`.
-- Las cartas de la colección que no están en el mazo se conservan.
-- La separación `pauper`/`no_pauper` usa la legalidad Pauper de Scryfall.
-
-**Salida en consola:**
-
-Solo se muestran las cartas nuevas o las copias faltantes. Las cartas que ya tienen una cantidad suficiente no se exportan.
-
-**Prioridad de tipos** cuando una carta tiene varios (p.ej. *Artifact Creature*): Creature > Land > Planeswalker > Instant/Sorcery > Artifact > Enchantment.
-
-**Cache local:** `cards_db.json` guarda `{nombre: {is_pauper, type_category}}` para evitar llamadas repetidas a Scryfall. Este archivo forma parte del repo (no se ignora en git) y nunca debe borrarse manualmente: se actualiza automáticamente al final de cada ejecución.
-
-**Formato de `urls.json`:**
-
-Escribe una o varias URLs de mazos de `mtgdecks.net`:
-
-```json
-[
-  "https://mtgdecks.net/Pauper/nombre-del-mazo-decklist-1234567"
-]
+```yaml
+decks:
+  standard:
+    izzet spellelementals: Deck - Izzet Spellementals
+  modern:
+    izzet prowess: Deck - Izzet Prowess
+  pioneer:
+    izzet prowess: Deck - Izzet Prowess (1)
+  pauper:
+    mono red madness: Deck - Mono Red Madness
 ```
 
-El script añade `/txt` a cada URL para obtener la lista de cartas.
+Cada valor se resuelve como un archivo `.txt` dentro de la misma carpeta `decks/`. No se escribe la extensión en el YAML. El orden de formatos y mazos se conserva al procesar las referencias entre mazos.
 
-Si una URL ya está en `decks_cache.json`, no se vuelve a consultar. Para forzar la actualización de todos los mazos usa `python scraper.py --refresh`. Esta opción vuelve a descargar las decklists y actualiza `decks_cache.json`; no borra las colecciones ni fuerza la actualización de las cartas que ya están en `cards_db.json`.
+Si falta un archivo referenciado, el proceso se detiene y muestra el formato, el nombre del mazo y la ruta faltante. Los archivos de `exports/` se limpian únicamente después de validar y leer todos los mazos.
 
-**Transferir exportaciones a la colección:**
+Las tierras básicas se ignoran. Las cartas del sideboard se incluyen, incluyendo líneas con prefijo `SB:`.
 
-Después de revisar las cartas faltantes y obtenerlas, ejecuta `python merger.py`. El script suma las cantidades de cada archivo de `export/` a su archivo correspondiente de `collection/`, conserva las cartas que ya estaban en la colección y vacía las exportaciones procesadas. `export/unknown.txt` no se modifica.
+La prioridad de tipos cuando una carta tiene varios es: Creature > Land > Planeswalker > Instant/Sorcery > Artifact > Enchantment.
 
-**Formato de la lista descargada:**
+**Formato de cada lista local:**
 
 Cada mazo debe devolver líneas con este formato:
 
@@ -129,73 +118,72 @@ Sideboard
 - Una sección opcional `Sideboard` (líneas que empiecen por `SB:` también se reconocen) cuyas cartas también se procesan.
 - Las tierras básicas (`Plains`, `Island`, `Swamp`, `Mountain`, `Forest` y variantes `Snow-Covered`, `Wastes`) se ignoran automáticamente.
 
-El script procesa todas las URLs y agrega las cartas tomando la cantidad máxima vista entre mazos.
+El script procesa los mazos en el orden del YAML y agrega las cartas Pauper tomando la cantidad máxima vista entre mazos.
 
 ### `pokemon.app`
 
-Scrapea decklists de Limitless TCG (`play.limitlesstcg.com/.../decklist`), separa las cartas en Pokémon y Trainers, y subclasifica los Trainers en **Supporter / Item / Tool / Stadium** consultando `limitlesstcg.com` (que expone el subtipo de cada carta). Las energías básicas se ignoran.
+Scrapea listas de Limitless TCG (`play.limitlesstcg.com/.../decklist`), separa las cartas en Pokémon y Trainers, y subclasifica los Trainers en **Supporter / Item / Tool / Stadium** consultando `limitlesstcg.com`. Las energías básicas se ignoran.
 
 **Estructura y archivos actualizados:**
 
 ```text
 pokemon.app/
-├── collection/
-│   ├── pokemon.txt
-│   ├── supporters.txt
-│   ├── items.txt
-│   ├── tools.txt
-│   ├── stadiums.txt
-│   └── energies.txt
+├── decks/
+│   └── decks.yaml
+├── cards_db.json
+├── decks_cache.json
 └── export/
-    ├── pokemon.txt
-    ├── supporters.txt
-    ├── items.txt
-    ├── tools.txt
-    ├── stadiums.txt
-    ├── energies.txt
-    └── unknown.txt
+    ├── collection_standard_pokemon.txt
+    ├── collection_standard_items.txt
+    ├── collection_standard_supporters.txt
+    ├── collection_standard_tools.txt
+    ├── collection_standard_stadiums.txt
+    ├── collection_standard_energies.txt
+    ├── collection_glc_pokemon.txt
+    ├── collection_glc_items.txt
+    ├── collection_glc_supporters.txt
+    ├── collection_glc_tools.txt
+    ├── collection_glc_stadiums.txt
+    ├── collection_glc_energies.txt
+    ├── unknown_standard.txt
+    └── unknown_glc.txt
 ```
 
-- Los archivos `collection/` contienen las cartas que ya tienes.
-- Los archivos `export/` contienen las cartas o copias que faltan.
-- `export/unknown.txt` contiene Trainers cuyo subtipo no se pudo determinar.
-- `decks_cache.json` — información descargada de cada URL para evitar consultas repetidas.
+- Cada archivo `collection_<formato>_<tipo>.txt` contiene todas las cartas de ese formato agregadas desde sus listas.
+- En `standard` se conserva la cantidad máxima de cada carta.
+- En `glc` todas las cartas se escriben con cantidad `1`.
+- Las cartas Pokémon conservan su impresión, por ejemplo `4 Pikachu (SVI-062)`.
+- `unknown_<formato>.txt` contiene Trainers cuyo subtipo no se pudo determinar.
+- `decks_cache.json` conserva las listas descargadas por URL para evitar consultas repetidas.
 
-El script crea automáticamente las carpetas y los archivos de exportación que no existan.
+El script regenera directamente los archivos `.txt` de `export/` en cada ejecución.
 
-**Archivos de entrada que mantiene el usuario:**
-- `urls.json` — URLs de los mazos a procesar.
-- `collection/pokemon.txt` — cartas Pokémon que ya tienes, formato `<cantidad> <nombre>`.
-- `collection/supporters.txt`, `collection/items.txt`, `collection/tools.txt`, `collection/stadiums.txt` — Trainers que ya tienes, mismo formato.
-- `collection/energies.txt` — Energías no básicas que ya tienes.
+**Formato de `decks/decks.yaml`:**
 
-Los archivos `urls.json` y las carpetas `collection/` y `export/` no están excluidos por `.gitignore` y pueden mantenerse en el repositorio.
+```yaml
+decks:
+  standard:
+    - https://play.limitlesstcg.com/tournament/.../player/.../decklist
+  glc:
+    - https://play.limitlesstcg.com/tournament/.../player/.../decklist
+```
 
-**Generación de exportación por carta:**
-- Los archivos de `collection/` no se modifican automáticamente.
-- Se exporta `max(cantidad_en_mazo - cantidad_en_collection, 0)`.
-- Las cartas de la colección que no están en el mazo se conservan.
-- Las cartas en `export/unknown.txt` no se agregan porque no se pueden clasificar.
+Los valores son únicamente URLs y no tienen nombre de mazo. El orden de los formatos se conserva. Si una URL aparece varias veces dentro de un formato, la cache evita descargarla más de una vez.
 
 **Salida en consola:**
 
-Solo se muestran las cartas nuevas o las copias faltantes. Las cartas que ya tienen una cantidad suficiente no se exportan.
+Las salidas contienen las cartas completas de cada formato, no diferencias contra una colección existente.
 
 **Cache local:** `cards_db.json` guarda `{nombre|set|numero: {supertype, subtype}}` para evitar llamadas repetidas a `limitlesstcg.com`. Este archivo forma parte del repo (no se ignora en git) y nunca debe borrarse manualmente.
 
-**Configuración:** edita `urls.json` con las URLs de los mazos a procesar (formato: `https://play.limitlesstcg.com/tournament/.../player/.../decklist`).
+**Configuración:** edita `decks/decks.yaml` con las URLs de los mazos a procesar.
 
 Si una URL ya está en `decks_cache.json`, no se vuelve a consultar. Para forzar la actualización de todos los mazos usa `python scraper.py --refresh`. Esta opción vuelve a descargar las decklists y actualiza `decks_cache.json`; no borra las colecciones ni fuerza la actualización de las cartas que ya están en `cards_db.json`.
-
-**Transferir exportaciones a la colección:**
-
-Después de revisar las cartas faltantes y obtenerlas, ejecuta `python merger.py`. El script suma las cantidades de cada archivo de `export/` a su archivo correspondiente de `collection/`, conserva las cartas que ya estaban en la colección y vacía las exportaciones procesadas. `export/unknown.txt` no se modifica.
 
 **Uso:**
 ```bash
 cd pokemon.app
-# Editar urls.json con las URLs de play.limitlesstcg.com a procesar
-# Rellenar los archivos de collection/ con las cartas que ya tienes
+# Editar decks/decks.yaml con las URLs de Limitless TCG
 python scraper.py
 ```
 

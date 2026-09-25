@@ -1,0 +1,9 @@
+decks:
+  standard:
+    izzet spellelementals: Deck - Izzet Spellementals
+  modern:
+    izzet prowess: Deck - Izzet Prowess
+  pioneer:
+    izzet prowess: Deck - Izzet Prowess - Pioneer
+  pauper:
+    mono red madness: Deck - Mono Red Madness

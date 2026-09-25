@@ -5460,123 +5460,156 @@
     "type_category": "creatures"
   },
   "Archaeomancer": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Azure Fleet Admiral": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Call Damage Control": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Contaminated Ground": {
     "type_category": "enchantments"
   },
   "Ephemerate": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Giant's Boulder": {
+    "is_pauper": true,
     "type_category": "artifacts"
   },
   "Gixian Infiltrator": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Glacial Floodplain": {
+    "is_pauper": true,
     "type_category": "lands"
   },
   "Gnaw to the Bone": {
     "type_category": "spells"
   },
   "Ride's End": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Rustvale Bridge": {
+    "is_pauper": true,
     "type_category": "lands"
   },
   "Scour from Existence": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Shenanigans": {
     "type_category": "spells"
   },
   "Skred": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Surveillance Room": {
+    "is_pauper": true,
     "type_category": "lands"
   },
   "Talisman of Resilience": {
     "type_category": "artifacts"
   },
   "Union of the Third Path": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Volatile Fjord": {
+    "is_pauper": true,
     "type_category": "lands"
   },
   "Demolition Field": {
+    "is_pauper": false,
     "type_category": "lands"
   },
   "Gigantic Big Bear": {
+    "is_pauper": false,
     "type_category": "creatures"
   },
   "Lumbering Worldwagon": {
+    "is_pauper": false,
     "type_category": "artifacts"
   },
   "Meltstrider's Resolve": {
+    "is_pauper": false,
     "type_category": "enchantments"
   },
   "Mossborn Hydra": {
+    "is_pauper": false,
     "type_category": "creatures"
   },
   "Sapling Nursery": {
+    "is_pauper": false,
     "type_category": "enchantments"
   },
   "Sazh's Chocobo": {
+    "is_pauper": false,
     "type_category": "creatures"
   },
   "Shared Roots": {
+    "is_pauper": false,
     "type_category": "spells"
   },
   "Snakeskin Veil": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Warg Tactics": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Distant Melody": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Elvish Vanguard": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Hydro-Man, Fluid Felon": {
+    "is_pauper": false,
     "type_category": "creatures"
   },
   "Lys Alana Huntmaster": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Mirrorshell Crab": {
     "type_category": "creatures"
   },
   "Valakut Invoker": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Ash Barrens": {
+    "is_pauper": true,
     "type_category": "lands"
   },
   "Elesh Norn, Mother of Machines": {
     "type_category": "creatures"
   },
   "Horrific Assault": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Jewel Thief": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Kessig Wolf Run": {
     "type_category": "lands"
   },
   "Kruphix's Insight": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Militia Bugler": {
@@ -5586,36 +5619,44 @@
     "type_category": "enchantments"
   },
   "Revoke Existence": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Selesnya Sanctuary": {
     "type_category": "lands"
   },
   "Smaug, the Great Calamity": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Spirit of the Labyrinth": {
     "type_category": "creatures"
   },
   "Brinebarrow Intruder": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Cryoshatter": {
+    "is_pauper": true,
     "type_category": "enchantments"
   },
   "Faerie Miscreant": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Harrier Strix": {
+    "is_pauper": true,
     "type_category": "creatures"
   },
   "Of One Mind": {
+    "is_pauper": true,
     "type_category": "spells"
   },
   "Snap": {
     "type_category": "spells"
   },
   "Spreading Seas": {
+    "is_pauper": true,
     "type_category": "enchantments"
   },
   "Unable to Scream": {
@@ -5714,6 +5755,182 @@
     "type_category": "spells"
   },
   "Wrath of God": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Balustrade Spy": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Dread Return": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Eagles of the North": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Elves of Deep Shadow": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Gatecreeper Vine": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Guerrilla Gorilla": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Jack-o'-Lantern": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Lotleth Giant": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Mesmeric Fiend": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Overgrown Battlement": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Powder Keg": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Saruli Caretaker": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Spinning Darkness": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Steadfast Unicorn": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Unmake": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Wall of Roots": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Tangle": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Whispersilk Cloak": {
+    "is_pauper": true,
+    "type_category": "artifacts"
+  },
+  "Artful Dodge": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Reckless Lackey": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Arc Lightning": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Fiery Cannonade": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Fire Whip": {
+    "is_pauper": true,
+    "type_category": "enchantments"
+  },
+  "Galvanic Discharge": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Goldhound": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Gurmag Angler": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Ice Tunnel": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Lose Focus": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Midnight Tilling": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Obsidian Charmaw": {
+    "is_pauper": false,
+    "type_category": "creatures"
+  },
+  "Perilous Landscape": {
+    "is_pauper": true,
+    "type_category": "lands"
+  },
+  "Plunder the Trollshaws": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Rishadan Port": {
+    "is_pauper": false,
+    "type_category": "lands"
+  },
+  "Tangle Wire": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Acorn Harvest": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Fanged Flames": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "God-Pharaoh's Faithful": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Late to Dinner": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Stonehorn Dignitary": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Undergrowth Leopard": {
+    "is_pauper": true,
+    "type_category": "creatures"
+  },
+  "Visionary's Dance": {
+    "is_pauper": true,
+    "type_category": "spells"
+  },
+  "Cursed Totem": {
+    "is_pauper": false,
+    "type_category": "artifacts"
+  },
+  "Null Elemental Blast": {
+    "is_pauper": false,
+    "type_category": "spells"
+  },
+  "Fire Magic": {
     "is_pauper": false,
     "type_category": "spells"
   }

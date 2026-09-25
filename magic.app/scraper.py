@@ -1,11 +1,12 @@
-import argparse
 import json
 import os
 import re
 import time
+import unicodedata
 
 import requests
-from curl_cffi import requests as cffi_requests
+import yaml
+
 
 BASIC_LANDS = {
     "Plains", "Island", "Swamp", "Mountain", "Forest",
@@ -23,8 +24,6 @@ CATEGORIES = (
     "enchantments",
 )
 
-FORMAT_BUCKETS = ("pauper", "no_pauper")
-
 SCRYFALL_HEADERS = {
     "User-Agent": "magic-app/1.0",
     "Accept": "*/*",
@@ -33,76 +32,85 @@ SCRYFALL_HEADERS = {
 
 def parse_card_line(line):
     line = re.sub(r"^SB:\s*", "", line, flags=re.IGNORECASE).strip()
-    m = re.match(r"^(\d+)\s+x?\s*(.+)$", line)
-    if not m:
+    match = re.match(r"^(\d+)\s*x?\s*(.+)$", line)
+    if not match:
         return None
-    return int(m.group(1)), m.group(2).strip().rstrip(",")
+    return int(match.group(1)), match.group(2).strip().rstrip(",")
 
 
 def classify_type(type_line):
-    tl = type_line or ""
-    if "Creature" in tl:
+    type_line = type_line or ""
+    if "Creature" in type_line:
         return "creatures"
-    if "Land" in tl:
+    if "Land" in type_line:
         return "lands"
-    if "Planeswalker" in tl:
+    if "Planeswalker" in type_line:
         return "planeswalkers"
-    if "Instant" in tl or "Sorcery" in tl:
+    if "Instant" in type_line or "Sorcery" in type_line:
         return "spells"
-    if "Artifact" in tl:
+    if "Artifact" in type_line:
         return "artifacts"
-    if "Enchantment" in tl:
+    if "Enchantment" in type_line:
         return "enchantments"
     return None
 
 
 def fetch_card_info(name, cards_db):
-    if name in cards_db:
-        return cards_db[name], True
+    cached_info = cards_db.get(name)
+    if (
+        isinstance(cached_info, dict)
+        and isinstance(cached_info.get("is_pauper"), bool)
+        and (
+            cached_info.get("type_category") in CATEGORIES
+            or cached_info.get("type_category") is None
+        )
+    ):
+        return cached_info, True
 
     url = "https://api.scryfall.com/cards/named?exact=" + requests.utils.quote(name)
     backoffs = [2, 4, 8, 16, 30, 30]
     for attempt, wait in enumerate(backoffs, start=1):
         try:
-            resp = requests.get(url, headers=SCRYFALL_HEADERS, timeout=15)
-        except requests.RequestException as e:
-            print(f"  ! Error de red con '{name}': {e}")
+            response = requests.get(url, headers=SCRYFALL_HEADERS, timeout=15)
+        except requests.RequestException as error:
+            print(f"  ! Error de red con '{name}': {error}")
             return None, False
 
-        if resp.status_code == 429:
-            print(f"  ! Rate limit (429) en '{name}'; esperando {wait}s (intento {attempt}/{len(backoffs)})...")
+        if response.status_code == 429:
+            print(
+                f"  ! Rate limit (429) en '{name}'; esperando {wait}s "
+                f"(intento {attempt}/{len(backoffs)})..."
+            )
             time.sleep(wait)
             continue
-
-        if resp.status_code != 200:
+        if response.status_code != 200:
             return None, False
         break
     else:
         return None, False
 
-    data = resp.json()
+    data = response.json()
     if data.get("object") == "error":
         return None, False
 
     if data.get("card_faces"):
-        faces_type_lines = [f.get("type_line", "") for f in data["card_faces"]]
-        type_line = " // ".join([t for t in faces_type_lines if t]) or data.get("type_line", "")
+        type_lines = [face.get("type_line", "") for face in data["card_faces"]]
+        type_line = " // ".join(line for line in type_lines if line) or data.get("type_line", "")
     else:
         type_line = data.get("type_line", "")
 
-    category = classify_type(type_line)
     info = {
         "is_pauper": data.get("legalities", {}).get("pauper") == "legal",
-        "type_category": category,
+        "type_category": classify_type(type_line),
     }
     cards_db[name] = info
     return info, False
 
 
-def load_cards_db():
+def load_cards_db(path="cards_db.json"):
     try:
-        with open("cards_db.json", "r", encoding="utf-8") as f:
-            data = json.load(f)
+        with open(path, "r", encoding="utf-8") as file:
+            data = json.load(file)
             if isinstance(data, dict):
                 return data
     except (FileNotFoundError, json.JSONDecodeError):
@@ -110,179 +118,164 @@ def load_cards_db():
     return {}
 
 
-def load_urls():
-    with open("urls.json", "r", encoding="utf-8") as f:
-        return json.load(f)
+def write_cards_db(cards_db, path="cards_db.json"):
+    with open(path, "w", encoding="utf-8") as file:
+        json.dump(cards_db, file, indent=2, ensure_ascii=False)
+        file.write("\n")
 
 
-def load_deck_cache(path="decks_cache.json"):
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            if isinstance(data, dict):
-                return data
-    except (FileNotFoundError, json.JSONDecodeError):
-        pass
-    return {}
+def load_decks(path="decks/decks.yaml"):
+    with open(path, "r", encoding="utf-8") as file:
+        data = yaml.safe_load(file) or {}
+
+    decks_by_format = data.get("decks") if isinstance(data, dict) else None
+    if not isinstance(decks_by_format, dict):
+        raise ValueError(f"{path} debe contener un objeto 'decks'.")
+
+    decks_dir = os.path.dirname(path) or "."
+    decks = []
+    for format_name, named_decks in decks_by_format.items():
+        if not isinstance(format_name, str) or not isinstance(named_decks, dict):
+            raise ValueError("Cada formato debe contener un mapa de nombre de mazo a archivo.")
+        for deck_name, file_stem in named_decks.items():
+            if not isinstance(deck_name, str) or not isinstance(file_stem, str) or not file_stem.strip():
+                raise ValueError("Cada mazo debe tener un nombre y un archivo válido.")
+
+            file_path = os.path.join(decks_dir, file_stem.strip() + ".txt")
+            if not os.path.isfile(file_path):
+                raise FileNotFoundError(
+                    f"No existe el archivo del mazo '{deck_name}' "
+                    f"(formato '{format_name}'): {file_path}"
+                )
+
+            decks.append({
+                "format": format_name,
+                "name": deck_name,
+                "path": file_path,
+            })
+    return decks
 
 
-def write_deck_cache(cache, path="decks_cache.json"):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(cache, f, indent=2, ensure_ascii=False)
-        f.write("\n")
-
-
-def scrape_decks(urls, refresh=False):
-    aggregated = {}
-    cache = load_deck_cache()
-    unique_urls = list(dict.fromkeys(urls))
-    for url in unique_urls:
-        txt_url = url.rstrip("/") + "/txt"
-        if not refresh and url in cache and isinstance(cache[url], list):
-            print(f"-> cache: {txt_url}")
-            deck_cards = cache[url]
+def normalize_deck_cards(deck_cards):
+    cards = {}
+    order = []
+    for quantity, name in deck_cards:
+        if name in BASIC_LANDS:
+            continue
+        if name not in cards:
+            order.append(name)
+            cards[name] = quantity
         else:
-            print(f"-> {txt_url}")
-            try:
-                response = cffi_requests.get(txt_url, impersonate="chrome", timeout=15)
-            except Exception as e:
-                print(f"  ! Error de red: {e}")
-                continue
-            if response.status_code != 200:
-                print(f"  ! HTTP {response.status_code}")
-                continue
-            deck_cards = []
-            for line in response.text.splitlines():
-                parsed = parse_card_line(line)
-                if not parsed:
-                    continue
-                qty, name = parsed
-                if name not in BASIC_LANDS:
-                    deck_cards.append([qty, name])
-            cache[url] = deck_cards
-            write_deck_cache(cache)
-
-        for qty, name in deck_cards:
-            aggregated[name] = max(aggregated.get(name, 0), qty)
-    return aggregated
+            cards[name] = max(cards[name], quantity)
+    return [[cards[name], name] for name in order]
 
 
-def read_collection_file(path):
-    aggregated = {}
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if not line or line.startswith("#") or line.startswith("//"):
-                    continue
-                m = re.match(r"^(\d+)\s+(.+)$", line)
-                if not m:
-                    continue
-                qty = int(m.group(1))
-                name = m.group(2).strip()
-                aggregated[name] = aggregated.get(name, 0) + qty
-    except FileNotFoundError:
-        pass
-    return aggregated
+def read_deck_file(path):
+    cards = []
+    with open(path, "r", encoding="utf-8") as file:
+        for line in file:
+            parsed = parse_card_line(line)
+            if parsed:
+                cards.append(parsed)
+    return normalize_deck_cards(cards)
 
 
-def write_collection_file(path, items):
-    with open(path, "w", encoding="utf-8") as f:
-        for name in sorted(items):
-            f.write(f"{items[name]} {name}\n")
+def normalize_filename_part(value):
+    normalized = unicodedata.normalize("NFKD", value)
+    normalized = normalized.encode("ascii", "ignore").decode("ascii")
+    normalized = re.sub(r"[^A-Za-z0-9]+", "_", normalized).strip("_")
+    return normalized.lower() or "unnamed"
 
 
-def update_collection(path, card_name, needed_qty):
-    existing = read_collection_file(path)
-    current_qty = existing.get(card_name, 0)
-    existing[card_name] = max(current_qty, needed_qty)
-    if existing[card_name] != current_qty:
-        write_collection_file(path, existing)
-        if current_qty == 0:
-            print(f"  Nueva carta: {needed_qty} {card_name}")
-        else:
-            print(f"  Nueva cantidad: {existing[card_name]} {card_name}")
-
-
-def write_export_file(path, items):
-    with open(path, "w", encoding="utf-8") as f:
-        for name in sorted(items):
-            if items[name] > 0:
-                f.write(f"{items[name]} {name}\n")
-
-
-def process_bucket(format_name, category, cards):
-    collection_dir = os.path.join(format_name, "collection")
-    export_dir = os.path.join(format_name, "export")
-    os.makedirs(collection_dir, exist_ok=True)
-    os.makedirs(export_dir, exist_ok=True)
-
-    collection_path = os.path.join(collection_dir, f"{category}.txt")
-    collection = read_collection_file(collection_path)
-    missing = {
-        name: max(needed_qty - collection.get(name, 0), 0)
-        for name, needed_qty in cards.items()
-    }
-    write_export_file(os.path.join(export_dir, f"{category}.txt"), missing)
-    for name, qty in sorted(missing.items()):
-        if qty:
-            print(f"  Exportar: {qty} {name}")
-
-
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--refresh",
-        action="store_true",
-        help="Vuelve a descargar todos los mazos y actualiza el cache.",
+def deck_filename(deck):
+    return "deck_{}_{}.txt".format(
+        normalize_filename_part(deck["format"]),
+        normalize_filename_part(deck["name"]),
     )
-    return parser.parse_args()
+
+
+def clear_exports(exports_dir):
+    os.makedirs(exports_dir, exist_ok=True)
+    for filename in os.listdir(exports_dir):
+        path = os.path.join(exports_dir, filename)
+        if os.path.isfile(path) and filename.lower().endswith(".txt"):
+            os.unlink(path)
+
+
+def write_card_file(path, cards):
+    with open(path, "w", encoding="utf-8") as file:
+        for quantity, name, reference in cards:
+            suffix = f" ({reference})" if reference else ""
+            file.write(f"{quantity} {name}{suffix}\n")
+
+
+def process_decks(decks, cards_db, exports_dir="exports"):
+    deck_cards = []
+    for deck in decks:
+        deck_cards.append((deck, read_deck_file(deck["path"])))
+
+    clear_exports(exports_dir)
+    pauper_cards = {category: [] for category in CATEGORIES}
+    pauper_indexes = {category: {} for category in CATEGORIES}
+    unknown_cards = []
+    unknown_seen = set()
+    first_occurrences = {}
+
+    for deck, cards in deck_cards:
+        output_cards = []
+        for quantity, name in cards:
+            info, was_cached = fetch_card_info(name, cards_db)
+            if not was_cached:
+                time.sleep(0.12)
+
+            if info is None or info.get("type_category") not in CATEGORIES:
+                if name not in unknown_seen:
+                    unknown_seen.add(name)
+                    unknown_cards.append(name)
+                continue
+
+            if info["is_pauper"]:
+                category = info["type_category"]
+                index = pauper_indexes[category].get(name)
+                if index is None:
+                    pauper_indexes[category][name] = len(pauper_cards[category])
+                    pauper_cards[category].append([quantity, name, None])
+                else:
+                    pauper_cards[category][index][0] = max(
+                        pauper_cards[category][index][0], quantity
+                    )
+                continue
+
+            reference = None
+            if name in first_occurrences:
+                first_quantity, first_deck = first_occurrences[name]
+                reference = f"{first_quantity} en {deck_filename(first_deck).removesuffix('.txt')}"
+            else:
+                first_occurrences[name] = (quantity, deck)
+            output_cards.append([quantity, name, reference])
+
+        write_card_file(os.path.join(exports_dir, deck_filename(deck)), output_cards)
+
+    write_cards_db(cards_db)
+    for category in CATEGORIES:
+        write_card_file(
+            os.path.join(exports_dir, f"collection_{category}.txt"),
+            pauper_cards[category],
+        )
+    with open(os.path.join(exports_dir, "unknown.txt"), "w", encoding="utf-8") as file:
+        for name in unknown_cards:
+            file.write(f"{name}\n")
 
 
 def main():
-    args = parse_args()
-    all_cards = scrape_decks(load_urls(), refresh=args.refresh)
-    print(f"Cartas unicas (excluyendo basicas): {len(all_cards)}")
-
-    if not all_cards:
-        print("Sin cartas que procesar.")
+    decks = load_decks()
+    if not decks:
+        print("No hay mazos configurados en decks/decks.yaml.")
         return
 
     cards_db = load_cards_db()
-
-    buckets = {
-        format_name: {category: {} for category in CATEGORIES}
-        for format_name in FORMAT_BUCKETS
-    }
-    unknown = {format_name: set() for format_name in FORMAT_BUCKETS}
-
-    for name in sorted(all_cards):
-        info, was_cached = fetch_card_info(name, cards_db)
-        if not was_cached:
-            time.sleep(0.12)
-        format_name = "pauper" if info and info.get("is_pauper") else "no_pauper"
-        if info is None or info.get("type_category") is None:
-            unknown[format_name].add(name)
-            continue
-        category = info["type_category"]
-        if category not in CATEGORIES:
-            unknown[format_name].add(name)
-            continue
-        buckets[format_name][category][name] = all_cards[name]
-
-    with open("cards_db.json", "w", encoding="utf-8") as f:
-        json.dump(cards_db, f, indent=2, ensure_ascii=False)
-        f.write("\n")
-
-    for format_name in FORMAT_BUCKETS:
-        for category in CATEGORIES:
-            process_bucket(format_name, category, buckets[format_name][category])
-        export_dir = os.path.join(format_name, "export")
-        with open(os.path.join(export_dir, "unknown.txt"), "w", encoding="utf-8") as f:
-            for name in sorted(unknown[format_name]):
-                f.write(f"{name}\n")
-        if unknown[format_name]:
-            print(f"  {format_name}/export/unknown.txt: {len(unknown[format_name])} cartas")
+    process_decks(decks, cards_db)
+    print(f"Mazos procesados: {len(decks)}")
 
 
 if __name__ == "__main__":

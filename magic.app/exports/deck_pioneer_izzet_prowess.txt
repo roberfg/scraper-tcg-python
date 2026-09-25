@@ -1,0 +1,19 @@
+4 Academic Dispute
+3 Boomerang Basics (4 en deck_modern_izzet_prowess)
+3 Emberheart Challenger
+4 Flow State
+4 Monastery Swiftspear (4 en deck_modern_izzet_prowess)
+4 Reckless Rage
+1 Riverglide Pathway
+4 Riverpyre Verge (4 en deck_standard_izzet_spellelementals)
+4 Shivan Reef
+4 Soul-Scar Mage
+4 Spirebluff Canal (4 en deck_standard_izzet_spellelementals)
+4 Steam Vents (4 en deck_standard_izzet_spellelementals)
+4 Stormchaser's Talent (2 en deck_modern_izzet_prowess)
+1 Iroh's Demonstration
+1 Price of Freedom
+2 Quantum Riddler
+2 Redcap Melee
+2 Scorching Shot
+1 Soul-Guide Lantern (2 en deck_standard_izzet_spellelementals)
