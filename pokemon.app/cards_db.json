@@ -122,5 +122,201 @@
   "Area Zero Underdepths|SCR|131": {
     "supertype": "Trainer",
     "subtype": "Stadium"
+  },
+  "Gwynn|PBL|78": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Team Rocket's Petrel|DRI|176": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Air Balloon|ASC|181": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Spikemuth Gym|DRI|169": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
+  },
+  "Ultra Ball|30C|128": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Poké Pad|30C|126": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Judge|POR|76": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Iono|PAL|185": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Guzma & Hala|CEC|193": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Guzma|BUS|115": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Hex Maniac|AOR|75": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Colress's Tenacity|SFA|57": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Arven|OBF|186": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Teammates|PRC|141": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Mallow|GRI|127": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Cheryl|BST|123": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Lysandre|AOR|78": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Enhanced Hammer|TWM|148": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Lost Vacuum|LOR|162": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Rescue Stretcher|GRI|130": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Quick Ball|FST|237": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Hisuian Heavy Ball|ASR|146": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Nest Ball|SVI|181": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "VS Seeker|PHF|109": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Evolution Incense|SSH|163": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Reset Stamp|UNM|206": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Scoop Up Net|RCL|165": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Level Ball|BST|129": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Hop's Choice Band|JTG|148": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Muscle Band|XY|121": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Float Stone|BKT|137": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Parallel City|BKT|145": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
+  },
+  "Lost City|LOR|161": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
+  },
+  "Artazon|PAL|171": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
+  },
+  "Postwick|JTG|154": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
+  },
+  "Marnie|SSH|169": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Raihan|EVS|152": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Klara|CRE|145": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Cynthia & Caitlin|CEC|189": {
+    "supertype": "Trainer",
+    "subtype": "Supporter"
+  },
+  "Mysterious Treasure|FLI|113": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Professor's Letter|BKT|146": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Tag Call|CEC|206": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Escape Rope|BST|125": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Field Blower|GRI|125": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Energy Retrieval|SVI|171": {
+    "supertype": "Trainer",
+    "subtype": "Item"
+  },
+  "Dragonium Z: Dragon Claw|CEC|190": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "U-Turn Board|UNM|211": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Technical Machine: Turbo Energize|PAR|179": {
+    "supertype": "Trainer",
+    "subtype": "Tool"
+  },
+  "Stormy Mountains|EVS|161": {
+    "supertype": "Trainer",
+    "subtype": "Stadium"
   }
 }
