@@ -1,0 +1,5 @@
+decks:
+  standard:
+    example deck: Deck - Example
+  pauper:
+    example pauper deck: Deck - Example Pauper

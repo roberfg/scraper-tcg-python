@@ -128,6 +128,24 @@ ENV/
 env.bak/
 venv.bak/
 
+# Local data, deck lists, caches, and generated exports
+magic.app/*.txt
+magic.app/*.json
+magic.app/*.yaml
+magic.app/*.yml
+magic.app/**/*.txt
+magic.app/**/*.json
+magic.app/**/*.yaml
+magic.app/**/*.yml
+pokemon.app/*.txt
+pokemon.app/*.json
+pokemon.app/*.yaml
+pokemon.app/*.yml
+pokemon.app/**/*.txt
+pokemon.app/**/*.json
+pokemon.app/**/*.yaml
+pokemon.app/**/*.yml
+
 # Spyder project settings
 .spyderproject
 .spyproject

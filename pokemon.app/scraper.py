@@ -67,6 +67,7 @@ def detect_section(heading_text):
 
 
 def load_formats(path="decks/decks.yaml"):
+    print(f"[Pokemon] Cargando configuración de formatos: {path}")
     with open(path, "r", encoding="utf-8") as file:
         data = yaml.safe_load(file) or {}
 
@@ -84,6 +85,10 @@ def load_formats(path="decks/decks.yaml"):
                 raise ValueError(f"El formato '{format_name}' contiene una URL inválida.")
             normalized_urls.append(url.strip())
         result.append((format_name, normalized_urls))
+    print(
+        "[Pokemon] Formatos cargados: "
+        + ", ".join(f"{name} ({len(urls)} URLs)" for name, urls in result)
+    )
     return result
 
 
@@ -92,9 +97,11 @@ def load_cards_db(path="cards_db.json"):
         with open(path, "r", encoding="utf-8") as file:
             data = json.load(file)
             if isinstance(data, dict):
+                print(f"[Pokemon] Caché de cartas cargada: {len(data)} registros")
                 return data
     except (FileNotFoundError, json.JSONDecodeError):
         pass
+    print(f"[Pokemon] No se encontró una caché válida de cartas: {path}")
     return {}
 
 
@@ -109,9 +116,11 @@ def load_deck_cache(path="decks_cache.json"):
         with open(path, "r", encoding="utf-8") as file:
             data = json.load(file)
             if isinstance(data, dict):
+                print(f"[Pokemon] Caché de decks cargada: {len(data)} URLs")
                 return data
     except (FileNotFoundError, json.JSONDecodeError):
         pass
+    print(f"[Pokemon] No se encontró una caché válida de decks: {path}")
     return {}
 
 
@@ -144,6 +153,10 @@ def parse_deck_response(content):
             if section == "Energy" and name in BASIC_ENERGIES:
                 continue
             deck_cards[section].append([name, set_code, number, quantity])
+    print(
+        "  [Pokemon] Cartas parseadas: "
+        + ", ".join(f"{section}={len(cards)}" for section, cards in deck_cards.items())
+    )
     return deck_cards
 
 
@@ -167,10 +180,15 @@ def normalize_cached_deck(deck_cards):
 
 def scrape_deck(url, cache, refresh=False):
     if not refresh and isinstance(cache.get(url), dict):
-        print(f"-> cache: {url}")
-        return normalize_cached_deck(cache[url])
+        print(f"[Pokemon] Deck desde caché: {url}")
+        deck_cards = normalize_cached_deck(cache[url])
+        print(
+            "  [Pokemon] Caché normalizada: "
+            + ", ".join(f"{section}={len(cards)}" for section, cards in deck_cards.items())
+        )
+        return deck_cards
 
-    print(f"-> {url}")
+    print(f"[Pokemon] Descargando deck: {url}")
     try:
         response = requests.get(url, headers=HEADERS, timeout=15)
     except requests.RequestException as error:
@@ -181,6 +199,7 @@ def scrape_deck(url, cache, refresh=False):
         return {section: [] for section in SECTIONS}
 
     deck_cards = parse_deck_response(response.content)
+    print(f"  [Pokemon] Guardando deck en caché: {url}")
     cache[url] = deck_cards
     write_deck_cache(cache)
     return deck_cards
@@ -207,6 +226,11 @@ def aggregate_cards(deck_cards, glc=False):
                     aggregated[section][index][3] = max(
                         aggregated[section][index][3], quantity
                     )
+    print(
+        "  [Pokemon] Agregación "
+        f"({'GLC' if glc else 'normal'}): "
+        + ", ".join(f"{section}={len(cards)}" for section, cards in aggregated.items())
+    )
     return aggregated
 
 
@@ -214,9 +238,11 @@ def fetch_card_subtype(name, set_code, number, cards_db):
     cache_key = f"{name}|{set_code}|{number}"
     cached_info = cards_db.get(cache_key)
     if isinstance(cached_info, dict):
+        print(f"    [cache] {name} ({set_code}-{number}): {cached_info}")
         return cached_info, True
 
     url = f"https://limitlesstcg.com/cards/{set_code}/{number}"
+    print(f"    [Limitless] Consultando subtipo de '{name}' ({set_code}-{number})...")
     backoffs = [2, 4, 8, 16, 30, 30]
     for attempt, wait in enumerate(backoffs, start=1):
         try:
@@ -232,6 +258,7 @@ def fetch_card_subtype(name, set_code, number, cards_db):
             time.sleep(wait)
             continue
         if response.status_code != 200:
+            print(f"    [Limitless] HTTP {response.status_code} para '{name}'")
             return None, False
         break
     else:
@@ -240,25 +267,31 @@ def fetch_card_subtype(name, set_code, number, cards_db):
     soup = BeautifulSoup(response.text, "html.parser")
     type_paragraph = soup.select_one("p.card-text-type")
     if not type_paragraph:
+        print(f"    [Limitless] No se encontró el tipo de '{name}'")
         return None, False
     supertype, subtype = parse_card_type_text(type_paragraph.get_text(" ", strip=True))
     info = {"supertype": supertype, "subtype": subtype}
     cards_db[cache_key] = info
+    print(f"    [Limitless] '{name}': {info}")
     return info, False
 
 
 def clear_exports(export_dir):
     os.makedirs(export_dir, exist_ok=True)
+    removed = 0
     for filename in os.listdir(export_dir):
         path = os.path.join(export_dir, filename)
         if os.path.isfile(path) and filename.lower().endswith(".txt"):
             os.unlink(path)
+            removed += 1
+    print(f"[Pokemon] Limpieza de {export_dir}: {removed} archivos eliminados")
 
 
 def write_named(path, names):
     with open(path, "w", encoding="utf-8") as file:
         for name in names:
             file.write(f"{name}\n")
+    print(f"[Pokemon] Generado {path}: {len(names)} registros")
 
 
 def write_cards(path, cards, include_printing=False):
@@ -266,32 +299,37 @@ def write_cards(path, cards, include_printing=False):
         for name, set_code, number, quantity in cards:
             printing = f" ({set_code}-{number})" if include_printing and set_code and number else ""
             file.write(f"{quantity} {name}{printing}\n")
+    print(f"[Pokemon] Generado {path}: {len(cards)} registros")
 
 
 def write_quantities(path, cards):
     with open(path, "w", encoding="utf-8") as file:
         for name, quantity in cards:
             file.write(f"{quantity} {name}\n")
+    print(f"[Pokemon] Generado {path}: {len(cards)} registros")
 
 
 def process_format(format_name, deck_cards, cards_db, export_dir):
     glc = format_name.lower() == "glc"
+    print(f"[Pokemon] Procesando formato {format_name}: {len(deck_cards)} decks")
     aggregated = aggregate_cards(deck_cards, glc=glc)
     trainer_buckets = {bucket: [] for bucket in SUBTYPE_TO_BUCKET.values()}
     trainer_indexes = {bucket: {} for bucket in trainer_buckets}
     trainer_unknown = []
     unknown_seen = set()
-
     for name, set_code, number, quantity in aggregated["Trainer"]:
+        print(f"  [Pokemon] Trainer: {quantity} {name} ({set_code}-{number})")
         info, was_cached = fetch_card_subtype(name, set_code, number, cards_db)
         if not was_cached:
             time.sleep(0.12)
         bucket = SUBTYPE_TO_BUCKET.get(info.get("subtype")) if info else None
         if not info or info.get("supertype") != "Trainer" or bucket not in trainer_buckets:
+            print(f"    [Pokemon] Destino: unknown_{format_name}.txt")
             if name not in unknown_seen:
                 unknown_seen.add(name)
                 trainer_unknown.append(name)
             continue
+        print(f"    [Pokemon] Destino: collection_{format_name}_{bucket}.txt")
         if name not in trainer_indexes[bucket]:
             trainer_indexes[bucket][name] = len(trainer_buckets[bucket])
             trainer_buckets[bucket].append([name, quantity])
@@ -304,16 +342,27 @@ def process_format(format_name, deck_cards, cards_db, export_dir):
     prefix = f"collection_{format_name}"
     write_cards(
         os.path.join(export_dir, f"{prefix}_pokemon.txt"),
-        aggregated["Pokemon"],
+        sorted(aggregated["Pokemon"], key=lambda card: card[0].casefold()),
         include_printing=True,
     )
     for bucket, cards in trainer_buckets.items():
-        write_quantities(os.path.join(export_dir, f"{prefix}_{bucket}.txt"), cards)
+        write_quantities(
+            os.path.join(export_dir, f"{prefix}_{bucket}.txt"),
+            sorted(cards, key=lambda card: card[0].casefold()),
+        )
     write_quantities(
         os.path.join(export_dir, f"{prefix}_energies.txt"),
-        [(name, quantity) for name, _set, _number, quantity in aggregated["Energy"]],
+        sorted(
+            [(name, quantity) for name, _set, _number, quantity in aggregated["Energy"]],
+            key=lambda card: card[0].casefold(),
+        ),
     )
     write_named(os.path.join(export_dir, f"unknown_{format_name}.txt"), trainer_unknown)
+    print(
+        f"[Pokemon] Resumen {format_name}: "
+        + ", ".join(f"{section}={len(cards)}" for section, cards in aggregated.items())
+        + f", trainers desconocidos={len(trainer_unknown)}"
+    )
 
 
 def parse_args():
@@ -328,10 +377,12 @@ def parse_args():
 
 def main():
     args = parse_args()
+    print(f"[Pokemon] Inicio del scraper (refresh={args.refresh})")
     formats = load_formats()
     cache = load_deck_cache()
     all_decks = {}
     for format_name, urls in formats:
+        print(f"[Pokemon] Procesando URLs del formato {format_name}")
         all_decks[format_name] = [
             scrape_deck(url, cache, refresh=args.refresh) for url in urls
         ]
@@ -342,7 +393,8 @@ def main():
     for format_name, _urls in formats:
         process_format(format_name, all_decks[format_name], cards_db, export_dir)
     write_cards_db(cards_db)
-    print(f"Formatos procesados: {len(formats)}")
+    print(f"[Pokemon] Caché de cartas guardada: {len(cards_db)} registros")
+    print(f"[Pokemon] Formatos procesados: {len(formats)}")
 
 
 if __name__ == "__main__":
