@@ -39,10 +39,12 @@ class MagicScraperTests(unittest.TestCase):
                 ):
                     scraper.process_decks(decks, {})
 
-                with open("exports/collection_creatures.txt", encoding="utf-8") as file:
+                with open("exports/collection_pauper_creatures.txt", encoding="utf-8") as file:
                     self.assertEqual(file.read(), "4 Pauper Card\n")
-                with open("exports/review_pauper_nonlegal.txt", encoding="utf-8") as file:
-                    self.assertEqual(file.read(), "1 Non Pauper Card (deck_pauper_tron)\n")
+                with open("exports/collection_non_pauper_spells.txt", encoding="utf-8") as file:
+                    self.assertEqual(file.read(), "1 Non Pauper Card\n")
+                self.assertFalse(os.path.exists("exports/collection_creatures.txt"))
+                self.assertFalse(os.path.exists("exports/review_pauper_nonlegal.txt"))
                 self.assertFalse(os.path.exists("exports/deck_pauper_tron.txt"))
             finally:
                 os.chdir(old_directory)
@@ -73,17 +75,13 @@ class MagicScraperTests(unittest.TestCase):
                 ):
                     scraper.process_decks(decks, {})
 
-                with open("exports/collection_creatures.txt", encoding="utf-8") as file:
+                with open("exports/collection_pauper_creatures.txt", encoding="utf-8") as file:
                     self.assertEqual(file.read(), "4 Pauper Card\n")
-                with open("exports/deck_standard_alpha.txt", encoding="utf-8") as file:
-                    self.assertEqual(file.read(), "2 Non Pauper Card\n")
-                with open("exports/deck_modern_beta.txt", encoding="utf-8") as file:
-                    self.assertEqual(
-                        file.read(),
-                        "4 Non Pauper Card (2 en deck_standard_alpha)\n",
-                    )
-                with open("exports/unknown.txt", encoding="utf-8") as file:
-                    self.assertEqual(file.read(), "Unknown Card\n")
+                with open("exports/collection_non_pauper_spells.txt", encoding="utf-8") as file:
+                    self.assertEqual(file.read(), "4 Non Pauper Card\n")
+                self.assertFalse(os.path.exists("exports/deck_standard_alpha.txt"))
+                self.assertFalse(os.path.exists("exports/deck_modern_beta.txt"))
+                self.assertFalse(os.path.exists("exports/unknown.txt"))
             finally:
                 os.chdir(old_directory)
 
@@ -108,7 +106,7 @@ class MagicScraperTests(unittest.TestCase):
                 ):
                     scraper.process_decks(decks, {})
 
-                with open("exports/collection_creatures.txt", encoding="utf-8") as file:
+                with open("exports/collection_pauper_creatures.txt", encoding="utf-8") as file:
                     self.assertEqual(file.read(), "1 alpha Card\n1 Zulu Card\n")
             finally:
                 os.chdir(old_directory)
@@ -118,40 +116,53 @@ class MagicScraperTests(unittest.TestCase):
         self.assertIsNone(scraper.parse_card_line("Sideboard"))
         self.assertIn("Island", scraper.BASIC_LANDS)
 
-    def test_load_decks_resolves_txt_files_and_preserves_order(self):
+    def test_load_formats_preserves_order_and_urls(self):
         with tempfile.TemporaryDirectory() as directory:
-            decks_dir = os.path.join(directory, "decks")
-            os.makedirs(decks_dir)
-            with open(os.path.join(decks_dir, "First Deck.txt"), "w", encoding="utf-8") as file:
-                file.write("1 Card\n")
-            with open(os.path.join(decks_dir, "Second Deck (1).txt"), "w", encoding="utf-8") as file:
-                file.write("1 Card\n")
-            path = os.path.join(decks_dir, "decks.yaml")
+            path = os.path.join(directory, "decks.yaml")
             with open(path, "w", encoding="utf-8") as file:
                 file.write(
                     "decks:\n"
                     "  standard:\n"
-                    "    first deck: First Deck\n"
-                    "  modern:\n"
-                    "    second deck: Second Deck (1)\n"
+                    "    - https://example.test/standard\n"
+                    "  modern: []\n"
                 )
 
-            decks = scraper.load_decks(path)
+            formats = scraper.load_formats(path)
 
         self.assertEqual(
-            [(deck["format"], deck["name"]) for deck in decks],
-            [("standard", "first deck"), ("modern", "second deck")],
+            formats,
+            [("standard", ["https://example.test/standard"]), ("modern", [])],
         )
-        self.assertTrue(decks[0]["path"].endswith("First Deck.txt"))
 
-    def test_load_decks_fails_when_file_is_missing(self):
+    def test_load_formats_fails_when_format_is_not_a_url_list(self):
         with tempfile.TemporaryDirectory() as directory:
             path = os.path.join(directory, "decks.yaml")
             with open(path, "w", encoding="utf-8") as file:
-                file.write("decks:\n  standard:\n    missing: Does Not Exist\n")
+                file.write("decks:\n  standard:\n    deck: invalid\n")
 
-            with self.assertRaisesRegex(FileNotFoundError, "missing.*standard"):
-                scraper.load_decks(path)
+            with self.assertRaisesRegex(ValueError, "lista de URLs"):
+                scraper.load_formats(path)
+
+    def test_parses_mtgdecks_arena_deck_with_sideboard(self):
+        content = b"""
+        <html><body><textarea id="arena_deck">
+        Deck
+        4 Main Card
+        2 Forest
+        Sideboard
+        1 Side Card
+        </textarea></body></html>
+        """
+
+        self.assertEqual(
+            scraper.parse_deck_response(content),
+            [[4, "Main Card"], [1, "Side Card"]],
+        )
+
+    def test_extracts_deck_name_from_mtgdecks_url(self):
+        url = "https://mtgdecks.net/Standard/izzet-spellementals-decklist-by-brunninho-3152160"
+
+        self.assertEqual(scraper.deck_name_from_url(url), "izzet spellementals")
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ Scripts para actualizar colecciones de cartas de Magic: The Gathering y Pokémon
 
 El proyecto contiene dos apps independientes:
 
-- **`magic.app/`**: lee mazos de Magic desde `decks/decks.yaml` y archivos locales `.txt`, clasifica cada carta por **legalidad Pauper** y **tipo** (criatura, instantáneo/conjuro, planeswalker, artefacto, encantamiento, tierra) consultando la API de Scryfall y genera las salidas en `exports/`. Tierras básicas se ignoran.
+- **`magic.app/`**: scrapea mazos de Magic desde `mtgdecks.net` usando las URLs de `decks/decks.yaml`, clasifica cada carta por **legalidad Pauper** y **tipo** (criatura, instantáneo/conjuro, planeswalker, artefacto, encantamiento, tierra) consultando la API de Scryfall y genera las salidas en `exports/`. Tierras básicas se ignoran.
 - **`pokemon.app/`**: scrapea listas de Pokémon desde `decks/decks.yaml`, separa Pokémon de Trainers y subclasifica los Trainers en **Supporter / Item / Tool / Stadium** consultando `limitlesstcg.com`. Energías básicas se ignoran.
 
 Los archivos locales de datos, configuración, caché y salida están ignorados por Git. Las plantillas versionadas terminan en `.example`; para usarlas, copia cada plantilla y elimina ese sufijo.
@@ -15,7 +15,7 @@ Los archivos locales de datos, configuración, caché y salida están ignorados 
 
 | Carpeta | Juego | Fuente |
 |---|---|---|
-| `magic.app/` | Magic: The Gathering | Listas locales + Scryfall |
+| `magic.app/` | Magic: The Gathering | `mtgdecks.net` + Scryfall |
 | `pokemon.app/` | Pokemon TCG | `play.limitlesstcg.com` + `limitlesstcg.com` |
 
 ## Requisitos
@@ -50,35 +50,24 @@ Dependencias principales: `requests`, `beautifulsoup4`, `PyYAML`.
 
 ### `magic.app`
 
-Lee `decks/decks.yaml`, procesa las listas locales de `decks/*.txt` y clasifica las cartas por legalidad Pauper y tipo consultando Scryfall.
+Lee las URLs de `decks/decks.yaml`, extrae la lista desde `mtgdecks.net` y clasifica las cartas por legalidad Pauper y tipo consultando Scryfall.
 
 La salida se regenera directamente en `exports/`:
 
 ```text
 magic.app/
 ├── decks/
-│   ├── decks.yaml.example
-│   ├── Deck - Example.txt.example
-│   └── Deck - Nombre del mazo.txt
+│   └── decks.yaml.example
 ├── cards_db.json.example
 └── exports/
-    ├── collection_artifacts.txt
-    ├── collection_creatures.txt
-    ├── collection_enchantments.txt
-    ├── collection_lands.txt
-    ├── collection_planeswalkers.txt
-    ├── collection_spells.txt
-    ├── deck_modern_izzet_prowess.txt
-    ├── review_pauper_nonlegal.txt
-    └── unknown.txt
+    ├── collection_pauper_<tipo>.txt
+    ├── collection_non_pauper_<tipo>.txt
+    └── ...
 ```
 
-- `collection_<tipo>.txt` contiene las cartas Pauper agrupadas por tipo. Si una carta aparece en varios mazos, se conserva la cantidad máxima.
-- `deck_<formato>_<mazo>.txt` contiene las cartas no Pauper de cada mazo, en el orden original.
-- Los mazos con formato `pauper` no generan archivos `deck_pauper_*.txt`; sus cartas legales se consolidan en las colecciones.
-- `review_pauper_nonlegal.txt` contiene las cartas clasificadas como no Pauper que aparecen dentro de mazos Pauper, junto con el deck de origen, para revisión manual.
-- Las cartas no Pauper que ya aparecieron en un mazo anterior incluyen una referencia a su primera aparición, por ejemplo `4 Arid Mesa (4 en deck_standard_boros_algo)`.
-- `unknown.txt` contiene una sola vez cada carta que Scryfall no pudo resolver o clasificar.
+- `collection_pauper_<tipo>.txt` contiene explícitamente las cartas Pauper agrupadas por tipo.
+- `collection_non_pauper_<tipo>.txt` contiene explícitamente las cartas no Pauper agrupadas por tipo. En ambos casos, si una carta aparece en varios mazos, se conserva la cantidad máxima.
+- No se generan archivos individuales por mazo ni archivos auxiliares de revisión.
 - Todos los archivos `.txt` anteriores de `exports/` se eliminan y regeneran en cada ejecución.
 
 La ejecución muestra trazas detalladas con prefijos `[Magic]`, `[Scryfall]`, `[Pokemon]` y `[Limitless]`, incluyendo el uso de caché, las cartas procesadas, su clasificación y los archivos generados.
@@ -87,46 +76,25 @@ La ejecución muestra trazas detalladas con prefijos `[Magic]`, `[Scryfall]`, `[
 
 ```yaml
 decks:
+  pauper: []
   standard:
-    izzet spellelementals: Deck - Izzet Spellementals
-  modern:
-    izzet prowess: Deck - Izzet Prowess
-  pioneer:
-    izzet prowess: Deck - Izzet Prowess (1)
-  pauper:
-    mono red madness: Deck - Mono Red Madness
+    - https://mtgdecks.net/Standard/example-decklist-by-player-0000000
+  modern: []
+  premodern: []
+  pioneer: []
 ```
 
-Cada valor se resuelve como un archivo `.txt` dentro de la misma carpeta `decks/`. No se escribe la extensión en el YAML. El orden de formatos y mazos se conserva al procesar las referencias entre mazos.
+Cada formato contiene una lista de URLs de mazos de `mtgdecks.net`. El orden de formatos y mazos se conserva durante el procesamiento.
 
-Si falta un archivo referenciado, el proceso se detiene y muestra el formato, el nombre del mazo y la ruta faltante. Los archivos de `exports/` se limpian únicamente después de validar y leer todos los mazos.
+Si una URL no responde correctamente o no contiene una lista reconocible, ese mazo se procesa vacío y se informa del error. Los archivos de `exports/` se limpian después de descargar y preparar todos los mazos.
 
-Las tierras básicas se ignoran. Las cartas del sideboard se incluyen, incluyendo líneas con prefijo `SB:`.
+Las tierras básicas se ignoran. Las cartas del sideboard se incluyen.
 
 La prioridad de tipos cuando una carta tiene varios es: Creature > Land > Planeswalker > Instant/Sorcery > Artifact > Enchantment.
 
-**Formato de cada lista local:**
+El script procesa los mazos en el orden del YAML y agrega cartas Pauper y no Pauper tomando la cantidad máxima vista entre mazos.
 
-Cada mazo debe devolver líneas con este formato:
-
-```
-4 Hearth Elemental
-4 Sunderflock
-...
-6 Island
-
-Sideboard
-2 Annul
-1 Broadside Barrage
-...
-```
-
-- Una línea por carta: `<cantidad> <nombre>` (puede tener `x` opcional: `4x Lightning Bolt`).
-- Las líneas vacías y las que empiezan por `#` o `//` se ignoran.
-- Una sección opcional `Sideboard` (líneas que empiecen por `SB:` también se reconocen) cuyas cartas también se procesan.
-- Las tierras básicas (`Plains`, `Island`, `Swamp`, `Mountain`, `Forest` y variantes `Snow-Covered`, `Wastes`) se ignoran automáticamente.
-
-El script procesa los mazos en el orden del YAML y agrega las cartas Pauper tomando la cantidad máxima vista entre mazos.
+La caché `decks_cache.json` conserva las listas descargadas por URL. Usa `python scraper.py --refresh` para volver a descargar los mazos.
 
 ### `pokemon.app`
 
