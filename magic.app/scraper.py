@@ -1,10 +1,13 @@
+import argparse
 import json
 import os
 import re
 import time
 import unicodedata
+from urllib.parse import unquote, urlparse
 
 import requests
+from bs4 import BeautifulSoup
 import yaml
 
 
@@ -27,6 +30,11 @@ CATEGORIES = (
 SCRYFALL_HEADERS = {
     "User-Agent": "magic-app/1.0",
     "Accept": "*/*",
+}
+
+MTGDECKS_HEADERS = {
+    "User-Agent": "curl/8.0",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 }
 
 
@@ -129,38 +137,109 @@ def write_cards_db(cards_db, path="cards_db.json"):
         file.write("\n")
 
 
-def load_decks(path="decks/decks.yaml"):
-    print(f"[Magic] Cargando configuración de mazos: {path}")
+def load_formats(path="decks/decks.yaml"):
+    print(f"[Magic] Cargando configuración de formatos: {path}")
     with open(path, "r", encoding="utf-8") as file:
         data = yaml.safe_load(file) or {}
 
-    decks_by_format = data.get("decks") if isinstance(data, dict) else None
-    if not isinstance(decks_by_format, dict):
+    formats = data.get("decks") if isinstance(data, dict) else None
+    if not isinstance(formats, dict):
         raise ValueError(f"{path} debe contener un objeto 'decks'.")
 
-    decks_dir = os.path.dirname(path) or "."
-    decks = []
-    for format_name, named_decks in decks_by_format.items():
-        if not isinstance(format_name, str) or not isinstance(named_decks, dict):
-            raise ValueError("Cada formato debe contener un mapa de nombre de mazo a archivo.")
-        for deck_name, file_stem in named_decks.items():
-            if not isinstance(deck_name, str) or not isinstance(file_stem, str) or not file_stem.strip():
-                raise ValueError("Cada mazo debe tener un nombre y un archivo válido.")
+    result = []
+    for format_name, urls in formats.items():
+        if not isinstance(format_name, str) or not isinstance(urls, list):
+            raise ValueError("Cada formato debe contener una lista de URLs.")
+        normalized_urls = []
+        for url in urls:
+            if not isinstance(url, str) or not url.strip():
+                raise ValueError(f"El formato '{format_name}' contiene una URL inválida.")
+            normalized_urls.append(url.strip())
+        result.append((format_name, normalized_urls))
+    print(
+        "[Magic] Formatos cargados: "
+        + ", ".join(f"{name} ({len(urls)} URLs)" for name, urls in result)
+    )
+    return result
 
-            file_path = os.path.join(decks_dir, file_stem.strip() + ".txt")
-            if not os.path.isfile(file_path):
-                raise FileNotFoundError(
-                    f"No existe el archivo del mazo '{deck_name}' "
-                    f"(formato '{format_name}'): {file_path}"
-                )
 
-            decks.append({
-                "format": format_name,
-                "name": deck_name,
-                "path": file_path,
-            })
-    print(f"[Magic] Mazos cargados: {len(decks)}")
-    return decks
+def load_deck_cache(path="decks_cache.json"):
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            if isinstance(data, dict):
+                print(f"[Magic] Caché de decks cargada: {len(data)} URLs")
+                return data
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+    print(f"[Magic] No se encontró una caché válida de decks: {path}")
+    return {}
+
+
+def write_deck_cache(cache, path="decks_cache.json"):
+    with open(path, "w", encoding="utf-8") as file:
+        json.dump(cache, file, indent=2, ensure_ascii=False)
+        file.write("\n")
+
+
+def parse_deck_response(content):
+    soup = BeautifulSoup(content, "html.parser")
+    deck_area = soup.select_one("#arena_deck")
+    if not deck_area:
+        print("  ! No se encontró la lista #arena_deck")
+        return []
+    cards = []
+    for line in deck_area.get_text().splitlines():
+        parsed = parse_card_line(line)
+        if parsed:
+            cards.append(parsed)
+    normalized_cards = normalize_deck_cards(cards)
+    print(f"  [Magic] Cartas parseadas: {len(normalized_cards)} únicas")
+    return normalized_cards
+
+
+def normalize_cached_deck(deck_cards):
+    cards = []
+    if not isinstance(deck_cards, list):
+        return cards
+    for entry in deck_cards:
+        if not isinstance(entry, list) or len(entry) != 2:
+            continue
+        quantity, name = entry
+        if isinstance(quantity, int) and isinstance(name, str) and name.strip():
+            cards.append([quantity, name.strip()])
+    return cards
+
+
+def scrape_deck(url, cache, refresh=False):
+    if not refresh and isinstance(cache.get(url), list):
+        print(f"[Magic] Deck desde caché: {url}")
+        return normalize_cached_deck(cache[url])
+
+    print(f"[Magic] Descargando deck: {url}")
+    try:
+        response = requests.get(url, headers=MTGDECKS_HEADERS, timeout=15)
+    except requests.RequestException as error:
+        print(f"  ! Error de red: {error}")
+        return []
+    if response.status_code != 200:
+        print(f"  ! HTTP {response.status_code}")
+        return []
+
+    deck_cards = parse_deck_response(response.content)
+    if not deck_cards:
+        return []
+    cache[url] = deck_cards
+    write_deck_cache(cache)
+    print(f"  [Magic] Deck guardado en caché: {url}")
+    return deck_cards
+
+
+def deck_name_from_url(url):
+    slug = urlparse(url).path.rstrip("/").split("/")[-1]
+    slug = re.sub(r"-decklist-by-[^-]+(?:-[^-]+)*-\d+$", "", slug)
+    slug = re.sub(r"-decklist.*$", "", slug)
+    return unquote(slug).replace("-", " ").strip() or "unnamed"
 
 
 def normalize_deck_cards(deck_cards):
@@ -227,16 +306,20 @@ def process_decks(decks, cards_db, exports_dir="exports"):
     deck_cards = []
     for deck in decks:
         print(f"[Magic] Preparando {deck['format']}/{deck['name']}")
-        deck_cards.append((deck, read_deck_file(deck["path"])))
+        cards = deck.get("cards")
+        if cards is None:
+            cards = read_deck_file(deck["path"])
+        deck_cards.append((deck, cards))
 
     clear_exports(exports_dir)
     pauper_cards = {category: [] for category in CATEGORIES}
     pauper_indexes = {category: {} for category in CATEGORIES}
+    non_pauper_cards = {category: [] for category in CATEGORIES}
+    non_pauper_indexes = {category: {} for category in CATEGORIES}
     unknown_cards = []
     unknown_seen = set()
     pauper_nonlegal_cards = []
-    first_occurrences = {}
-    counters = {"pauper": 0, "nonlegal_pauper": 0, "unknown": 0, "deck": 0}
+    counters = {"pauper": 0, "nonlegal_pauper": 0, "unknown": 0}
 
     for deck, cards in deck_cards:
         is_pauper_deck = deck["format"].lower() == "pauper"
@@ -244,7 +327,6 @@ def process_decks(decks, cards_db, exports_dir="exports"):
             f"[Magic] Procesando {deck['format']}/{deck['name']} "
             f"({len(cards)} cartas, pauper={is_pauper_deck})"
         )
-        output_cards = []
         for quantity, name in cards:
             print(f"  [Magic] Carta: {quantity} {name}")
             info, was_cached = fetch_card_info(name, cards_db)
@@ -261,7 +343,7 @@ def process_decks(decks, cards_db, exports_dir="exports"):
 
             if info["is_pauper"]:
                 category = info["type_category"]
-                print(f"    [Magic] Destino: collection_{category}.txt")
+                print(f"    [Magic] Destino: collection_pauper_{category}.txt")
                 index = pauper_indexes[category].get(name)
                 if index is None:
                     pauper_indexes[category][name] = len(pauper_cards[category])
@@ -273,8 +355,18 @@ def process_decks(decks, cards_db, exports_dir="exports"):
                 counters["pauper"] += 1
                 continue
 
+            category = info["type_category"]
+            index = non_pauper_indexes[category].get(name)
+            if index is None:
+                non_pauper_indexes[category][name] = len(non_pauper_cards[category])
+                non_pauper_cards[category].append([quantity, name, None])
+            else:
+                non_pauper_cards[category][index][0] = max(
+                    non_pauper_cards[category][index][0], quantity
+                )
+
             if is_pauper_deck:
-                print("    [Magic] Destino: review_pauper_nonlegal.txt")
+                print(f"    [Magic] Destino: collection_non_pauper_{category}.txt")
                 pauper_nonlegal_cards.append([
                     quantity,
                     name,
@@ -283,46 +375,48 @@ def process_decks(decks, cards_db, exports_dir="exports"):
                 counters["nonlegal_pauper"] += 1
                 continue
 
-            reference = None
-            if name in first_occurrences:
-                first_quantity, first_deck = first_occurrences[name]
-                reference = f"{first_quantity} en {deck_filename(first_deck).removesuffix('.txt')}"
-            else:
-                first_occurrences[name] = (quantity, deck)
-            output_cards.append([quantity, name, reference])
-
-        if is_pauper_deck:
-            print(f"[Magic] No se genera deck_pauper para {deck['name']}")
-        else:
-            write_card_file(os.path.join(exports_dir, deck_filename(deck)), output_cards)
-            counters["deck"] += 1
+        print(f"[Magic] No se genera lista individual para {deck['name']}")
 
     write_cards_db(cards_db)
     for category in CATEGORIES:
         write_card_file(
-            os.path.join(exports_dir, f"collection_{category}.txt"),
+            os.path.join(exports_dir, f"collection_pauper_{category}.txt"),
             sorted(pauper_cards[category], key=lambda card: card[1].casefold()),
         )
-    with open(os.path.join(exports_dir, "unknown.txt"), "w", encoding="utf-8") as file:
-        for name in unknown_cards:
-            file.write(f"{name}\n")
-    print(f"[Magic] Generado {os.path.join(exports_dir, 'unknown.txt')}: {len(unknown_cards)} registros")
-    write_card_file(
-        os.path.join(exports_dir, "review_pauper_nonlegal.txt"),
-        pauper_nonlegal_cards,
-    )
+        write_card_file(
+            os.path.join(exports_dir, f"collection_non_pauper_{category}.txt"),
+            sorted(non_pauper_cards[category], key=lambda card: card[1].casefold()),
+        )
     print(
         "[Magic] Resumen: "
         f"cartas Pauper={counters['pauper']}, "
         f"no legales en Pauper={counters['nonlegal_pauper']}, "
-        f"desconocidas={counters['unknown']}, "
-        f"decks exportados={counters['deck']}"
+        f"desconocidas={counters['unknown']}"
     )
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Scrapea mazos de Magic desde mtgdecks.net.")
+    parser.add_argument(
+        "--refresh",
+        action="store_true",
+        help="Ignora la caché de mazos y vuelve a descargarlos.",
+    )
+    arguments = parser.parse_args()
+
     print("[Magic] Inicio del scraper")
-    decks = load_decks()
+    formats = load_formats()
+    cache = load_deck_cache()
+    decks = []
+    for format_name, urls in formats:
+        for url in urls:
+            decks.append({
+                "format": format_name,
+                "name": deck_name_from_url(url),
+                "url": url,
+                "cards": scrape_deck(url, cache, refresh=arguments.refresh),
+            })
+
     if not decks:
         print("No hay mazos configurados en decks/decks.yaml.")
         return

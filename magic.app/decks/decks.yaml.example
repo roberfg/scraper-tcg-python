@@ -1,5 +1,7 @@
 decks:
+  pauper: []
   standard:
-    example deck: Deck - Example
-  pauper:
-    example pauper deck: Deck - Example Pauper
+    - https://mtgdecks.net/Standard/example-decklist-by-player-0000000
+  modern: []
+  premodern: []
+  pioneer: []
